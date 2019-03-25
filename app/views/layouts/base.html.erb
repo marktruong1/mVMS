@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en-us" class="">
+<%= render partial: 'shared/head' %>
+<!-- #BODY -->
+<!-- Possible Classes
+
+  * 'smart-style-{SKIN#}'
+  * 'smart-rtl'         - Switch theme mode to RTL
+  * 'menu-on-top'       - Switch to top navigation (no DOM change required)
+  * 'no-menu'			  - Hides the menu completely
+  * 'hidden-menu'       - Hides the main menu but still accessable by hovering over left edge
+  * 'fixed-header'      - Fixes the header
+  * 'fixed-navigation'  - Fixes the main menu
+  * 'fixed-ribbon'      - Fixes breadcrumb
+  * 'fixed-page-footer' - Fixes footer
+  * 'container'         - boxed layout mode (non-responsive: will not work with fixed-navigation & fixed-ribbon)
+-->
+
+<body class="<%= Setting.theme.values.join(' ') %>" data-user-id="<%= user_signed_in? ? current_user.id : ''  %>">
+
+<!-- HEADER -->
+<%= render partial: 'shared/header' %>
+<!-- END HEADER -->
+
+<!-- Left panel : Navigation area -->
+<!-- Note: This width of the aside area can be adjusted through LESS variables -->
+<%= render partial: 'menu/base_menu' %>
+<!-- END NAVIGATION -->
+
+<!-- MAIN PANEL -->
+<div id="main" role="main" style="min-height: 100vh;">
+  <!-- END RIBBON -->
+
+  <div id="content">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="no-padding">
+          <%= render_flash_messages %>
+          <% if breadcrumbs.present? %>
+              <ol class="breadcrumb" style="font-size: 18px">
+                <%= render_breadcrumbs :tag => :li, :separator => "" %>
+              </ol>
+          <% end %>
+          <%= yield %>
+        </div>
+        <div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- END MAIN PANEL -->
+<%#= render partial: 'shared/shortcuts' %>
+<!-- PAGE FOOTER -->
+<div class="page-footer">
+  <%= render partial: 'shared/footer' %>
+</div>
+<!-- END PAGE FOOTER -->
+<%= javascript_include_tag 'admin/smart_admin' %>
+
+<script>
+  $(document).ready(function() {
+    // DO NOT REMOVE : GLOBAL FUNCTIONS!
+    pageSetUp();
+  });
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,5 @@
+<h2>Setup Page</h2>
+<%= form_tag '/setup' do %>
+  <%= text_area_tag :value, Setting.first.try(:value), rows: 5, cols: 100  %><br>
+  <%= submit_tag 'Save', class: 'btn btn-success' %>
+<% end %>

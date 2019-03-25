@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>mVMS</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-theme2.css">
+  <link rel="stylesheet" href="css/mvms_visitors_style.css">
+</head>
+<body class="ltblueback">
+
+<div id="main" class="container">
+
+  <div id="signout_message">
+    <h1><img class="smlogo" src="images/microhealth-logo.svg" /></h1>
+    <h2>Thank You <span class="nobreak" id="msg_person_name"></span> for stopping by.</h2>
+    <h3>You have been signed out of your visit to <span class="nobreak" id="msg_person_visiting"></span> at <span class="nobreak" id="msg_time_out"></span>.</h3>
+    <h4>Please discard your badge.</h4>
+  </div>
+
+  <div id="footer">
+    <div class="buttonrow2">
+      <p>
+        <button id="exit_btn" class="btn btn-warning">Exit</button>
+      </p>
+    </div>
+  </div>
+</div><!-- main  -->
+
+<script src="js/bootstrap.min.js"></script>
+<script>
+  $(document).ready(function() {
+    var url_string = window.location.href;
+    var url = new URL(url_string);
+    var personname = url.searchParams.get("person_name");
+    document.getElementById("msg_person_name").innerHTML = personname;
+    var personvisiting = url.searchParams.get("person_visiting");
+    document.getElementById("msg_person_visiting").innerHTML = personvisiting;
+    const monthNames = ["Jan.", "Feb.", "Mar.", "Apr.", "May", "June", "July", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."];
+    var timeout = url.searchParams.get("time_out");
+    var d = new Date(Number(timeout));
+    var thisvisit = monthNames[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear() + ' at ' + ("0" + d.getHours()).slice(-2) + ':' + ("0" + d.getMinutes()).slice(-2);
+    document.getElementById("msg_time_out").innerHTML = thisvisit;
+    $("#exit_btn").click(function () {
+      window.location.href = "visitors.html";
+    });
+  })
+</script>
+</body>
+</html>

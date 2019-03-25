@@ -1,0 +1,23 @@
+<div class="module-title">
+  <h2 class='module-title-text'>USERS</h2>
+</div>
+
+<section id="widget-grid" class="users_list">
+  <div class="row" style="margin-bottom: 10px">
+    <div class="col-md-12 ">
+      <div class="pull-right">
+        <%= show_button(new_employee_path, 'New user', 'plus', 'primary') %>
+       </div>
+    </div>
+  </div>
+  <div class="row">
+    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <%= render partial: 'list',
+                 layout: 'shared/smart_widget_wrapper',
+                 locals: {
+                     wid_id: 'users',
+                     wid_title: ' '
+                 } %>
+    </article>
+  </div>
+</section>

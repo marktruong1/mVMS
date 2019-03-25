@@ -1,0 +1,13 @@
+<section id="widget-grid" class="new_user_account">
+  <div class="row">
+    <article class="col-xs-12">
+      <%= render partial: 'new',
+                 layout: 'shared/smart_widget_wrapper',
+                 locals: {
+                     wid_id: 'new_user',
+                     wid_title: 'New user',
+                     user: @user
+                 } %>
+    </article>
+  </div>
+</section>

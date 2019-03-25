@@ -1,0 +1,46 @@
+<% unless params[:controller] == 'rss_feed/rss' %>
+    <li class="chat-users top-menu-invisible">
+      <a href="#"><i class="fa fa-lg fa-fw fa-comment-o"></i> <span class="menu-item-parent"> User ChatRoom</span></a>
+      <ul>
+        <li>
+          <!-- DISPLAY USERS -->
+          <div class="display-users">
+            <input class="form-control chat-user-filter" id="chat-user-filter" placeholder="Filter" type="text">
+            <div id="user_connected">
+
+            </div>
+          </div>
+          <!-- END DISPLAY USERS -->
+        </li>
+      </ul>
+    </li>
+
+    <script>
+      $(document).ready(function(){
+        <% unless Rails.env.development? %>
+        var get_recently_connected = true;
+        var get_recently_connected_person = function(){
+          if(get_recently_connected)
+          {
+            $.getScript('/users/recently_connected')
+            setTimeout(function(){get_recently_connected_person()}, 30000)
+          }
+          else
+            setTimeout(function(){get_recently_connected_person()}, 5000)
+        }
+
+        $('.chat-user-filter').on('focus', function(){
+          get_recently_connected = false
+        });
+        $('.chat-user-filter').on('blur', function(){
+          setTimeout(function(){ get_recently_connected= true; }, 5000)
+        })
+        get_recently_connected_person()
+
+        <% end %>
+        $('#chat-user-filter').on('change', function(){
+          $.getScript('/users/search_users.js?q='+$(this).val())
+        })
+      })
+    </script>
+<% end %>

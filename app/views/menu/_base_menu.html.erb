@@ -1,0 +1,32 @@
+<aside class='noprint' id="left-panel">
+  <% if user_signed_in? %>
+      <!-- User info -->
+      <div class="login-info">
+				<span> <!-- User image size is adjusted inside CSS, it should stay as it -->
+
+					<a href="/users/edit" id="show-shortcut">
+            <%= image_tag User.current.profile_image, class: 'online' %>
+            <span>
+							<%= User.current.name %>
+						</span>
+
+          </a>
+
+				</span>
+      </div>
+      <!-- end user info -->
+  <% end %>
+  <!-- NAVIGATION : This navigation is also responsive-->
+  <nav>
+    <% if user_signed_in? %>
+        <%= render  partial: 'menu/signed_in' %>
+    <% else %>
+        <%= render partial: 'menu/not_signed_in' %>
+    <% end %>
+  </nav>
+			<span class="minifyme" data-action="minifyMenu">
+				<i class="fa fa-arrow-circle-left hit"></i>
+			</span>
+
+</aside>
+

@@ -1,0 +1,70 @@
+<div id="visit_info">
+  <h1><a href='/'> <img class="smlogo" src="/images/microhealth-logo.svg" /></a></h1>
+  <h2>Visit Information</h2>
+  <div class="complete_msg" id="visit_complete_msg">Must complete form!</div>
+
+  <div class="row firstelement">
+    <div class="col-xs-12 col-sm-3 col-md-3">
+      <label for="reason">Visit Reason:</label>
+    </div>
+    <div class="col-xs-12 col-sm-9 col-md-9">
+      <!--<input type="text" class="form-control" id="reason" name="reason" />-->
+      <%= select_tag :reason, options_for_select(Reason.pluck(:name) ), class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-3 col-md-3">
+      <label for="person_visiting">Person Visiting:</label>
+    </div>
+    <div class="col-xs-12 col-sm-9 col-md-9">
+      <input type="text" class="form-control" id="person_visiting" name="person_visiting">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-4 col-sm-3">
+      <p class="formlabel">U.S. Citizen:</p>
+    </div>
+    <div class="col-xs-4 col-sm-5">
+      <div class="form-check">
+        <label class="form-check-label" for="citizen_yes" id="citizen_yes_label">
+          <input type="radio" class="form-check-input" name="citizen" id="citizen_yes" value="yes" checked="checked">
+          Yes</label>
+      </div>
+    </div>
+    <div class="col-xs-4">
+      <div class="form-check">
+        <label class="form-check-label" for="citizen_no" id="citizen_no_label">
+          <input type="radio" class="form-check-input" name="citizen" id="citizen_no" value="no">
+          No</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-4 col-sm-3">
+      <p class="formlabel">Classified:</p>
+    </div>
+    <div class="col-xs-4 col-sm-5">
+      <div class="form-check">
+        <label class="form-check-label" for="classified_yes" id="classified_yes_label">
+          <input type="radio" class="form-check-input" name="classified" id="classified_yes" value="yes">
+          Yes</label>
+      </div>
+    </div>
+    <div class="col-xs-4 col-sm-4">
+      <div class="form-check">
+        <label class="form-check-label" for="classified_no" id="classified_no_label">
+          <input type="radio" class="form-check-input" name="classified" id="classified_no" value="no" checked="checked">
+          No</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="buttonrow">
+    <button id="visit_back_btn" class="btn btn-primary">Back</button>
+    <button id="visit_cancel_btn" class="btn btn-warning">Cancel</button>
+    <button id="visit_next_btn" class="btn btn-success">Next</button>
+  </div>
+</div><!-- visit_info  -->

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>mVMS</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
+  <script src="js/moment.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/bootstrap-datetimepicker.min.js"></script>
+  <script src="js/autocomplete.js"></script>
+<!--  <script src="js/seeds.js"></script> -->
+  <script type="text/javascript">
+    $(function () {
+      $('#datetime_out').datetimepicker({
+        format: 'l, LTS'
+      });
+      $("#company").autocomplete({
+        source: companies
+      });
+      $("#person_visiting").autocomplete({
+        source: personnel
+      });
+    });
+  </script>
+  <link rel="stylesheet" href="css/jquery-ui.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-theme2.css">
+  <link rel="stylesheet" href="css/autocomplete.css">
+  <link rel="stylesheet" href="css/mvms_visitors_style.css">
+</head>
+<body class="ltblueback">
+
+<div id="main2" class="container">
+
+  <form id="visitor_sign_form" autocomplete="off">
+    <div class="form-group">
+  
+      <div id="capture_photo">
+        <h1><img class="smlogo" src="images/microhealth-logo.svg" /></h1>
+        <h2>Photo</h2>
+        <div class="complete_msg" id="capture_complete_msg">Must complete form!</div>
+
+        <div class="row" id="recognize_instructions">
+          <div class="col-xs-7 col-sm-6" id="camera_msg">
+            Please look at the camera so your face may be recognized.
+          </div>
+          <div class="col-xs-5 col-sm-6" id="photo_div">
+            <img id="person_image" src="images/click_photo.jpg">
+          </div>
+          <div id="person_image_src_div" hidden>
+            <input id="person_image_url">
+          </div>
+        </div>
+        <div class="row" id="capture_instructions">
+          <div class="col-xs-12" id="signin_capture_msg">
+            Click the image to take a picture. Repeat until you&rsquo;re satisfied with your photo.
+          </div>
+          <div class="col-xs-12" id="signout_capture_msg">
+            If your face is not recognized within a minute, please enter your name in the box below.
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-3 col-md-2">
+            <label for="capture_person_name">Name:</label>
+          </div>
+          <div class="col-xs-12 col-sm-9 col-md-10">
+            <input type="text" class="form-control" id="capture_person_name" name="capture_person_name">
+          </div>
+          <div class="col-xs-12">
+            <p><span id="capture_person_msg"></span></p>
+          </div>
+        </div>
+
+        <div class="row" id="signin_check_visit">
+          <div class="col-xs-3 col-sm-3 col-md-2">
+            <p class="formlabel">First Visit:</p>
+          </div>
+          <div class="col-xs-3 col-sm-3 col-md-3">
+            <div class="form-check">
+              <label class="form-check-label" for="first_visit_yes" id="first_visit_yes_label">
+              <input type="radio" class="form-check-input" name="first_visit" id="first_visit_yes" value="yes">
+              Yes</label>
+            </div>
+          </div>
+          <div class="col-xs-6 col-md-7">
+            <div class="form-check">
+              <label class="form-check-label" for="first_visit_no" id="first_visit_no_label">
+              <input type="radio" class="form-check-input" name="first_visit" id="first_visit_no" value="no">
+              No</label>
+            </div>
+            <div class="form-check" id="update_contact_info_div">
+              <label class="form-check-label" for="update_contact" id="update_contact_label">
+              <input type="checkbox" class="form-check-input" name="update_contact" id="update_contact">
+              Yes, update my info (Name, Photo and/or Contact Info)</label>
+            </div>
+          </div>
+        </div>
+        <div class="row" hidden>
+          <div class="col-xs-12">
+            <input type="text" class="form-control" id="person_id" name="person_id" readonly>
+          </div>
+        </div>
+
+
+        <div class="buttonrow">
+          <button id="missed_btn" class="btn btn-danger">Missed</button>
+          <button id="capture_cancel_btn" class="btn btn-warning">Cancel</button>
+          <button id="capture_next_btn" class="btn btn-success">Next</button>
+        </div>
+      </div><!-- capture_photo  -->
+
+<!-- ********************************************************************************************  -->
+
+      <div id="contact_info">
+        <h1><img class="smlogo" src="images/microhealth-logo.svg" /></h1>
+        <h2>Contact Information</h2>
+        <div class="complete_msg" id="contact_complete_msg">Must complete form!</div>
+
+        <div class="row firstelement">
+          <div class="col-xs-12 col-sm-2 col-md-2">
+            <label for="person_name">Name:</label>
+          </div>
+          <div class="col-xs-12 col-sm-10 col-md-10">
+            <input type="text" class="form-control ltgrey" id="person_name" name="person_name" readonly>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-2 col-md-2">
+            <label for="company">Company:</label>
+          </div>
+          <div class="col-xs-12 col-sm-10 col-md-10">
+            <input type="text" class="form-control" id="company" name="company">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-2 col-md-2">
+            <label for="phone">Phone:</label>
+          </div>
+          <div class="col-xs-12 col-sm-10 col-md-10">
+            <input type="text" class="form-control" id="phone" name="phone">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-2 col-md-2">
+            <label for="email">Email:</label>
+          </div>
+          <div class="col-xs-12 col-sm-10 col-md-10">
+            <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+          </div>
+        </div>
+
+        <div class="buttonrow">
+          <button id="contact_back_btn" class="btn btn-primary">Back</button>
+          <button id="contact_cancel_btn" class="btn btn-warning">Cancel</button>
+          <button id="contact_next_btn" class="btn btn-success">Next</button>
+        </div>
+      </div><!-- contact_info  -->
+
+<!-- ********************************************************************************************  -->
+
+      <div id="visit_info">
+        <h1><img class="smlogo" src="images/microhealth-logo.svg" /></h1>
+        <h2>Visit Information</h2>
+        <div class="complete_msg" id="visit_complete_msg">Must complete form!</div>
+
+        <div class="row firstelement">
+          <div class="col-xs-12 col-sm-3 col-md-3">
+            <label for="reason">Visit Reason:</label>
+          </div>
+          <div class="col-xs-12 col-sm-9 col-md-9">
+            <select class="form-control" id="reason" name="reason">
+            <option value="0">Select</option>
+            <option value="1">Reason 1</option>
+            <option value="2">Reason 2</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-3 col-md-3">
+            <label for="person_visiting">Person Visiting:</label>
+          </div>
+          <div class="col-xs-12 col-sm-9 col-md-9">
+            <input type="text" class="form-control" id="person_visiting" name="person_visiting">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-4 col-sm-3">
+            <p class="formlabel">U.S. Citizen:</p>
+          </div>
+          <div class="col-xs-4 col-sm-5">
+            <div class="form-check">
+              <label class="form-check-label" for="citizen_yes" id="citizen_yes_label">
+              <input type="radio" class="form-check-input" name="citizen" id="citizen_yes" value="yes">
+              Yes</label>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="form-check">
+              <label class="form-check-label" for="citizen_no" id="citizen_no_label">
+              <input type="radio" class="form-check-input" name="citizen" id="citizen_no" value="no">
+              No</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-4 col-sm-3">
+            <p class="formlabel">Classified:</p>
+          </div>
+          <div class="col-xs-4 col-sm-5">
+            <div class="form-check">
+              <label class="form-check-label" for="classified_yes" id="classified_yes_label">
+              <input type="radio" class="form-check-input" name="classified" id="classified_yes" value="yes">
+              Yes</label>
+            </div>
+          </div>
+          <div class="col-xs-4 col-sm-4">
+            <div class="form-check">
+              <label class="form-check-label" for="classified_no" id="classified_no_label">
+              <input type="radio" class="form-check-input" name="classified" id="classified_no" value="no">
+              No</label>
+            </div>
+          </div>
+        </div>
+   
+        <div class="buttonrow">
+          <button id="visit_back_btn" class="btn btn-primary">Back</button>
+          <button id="visit_cancel_btn" class="btn btn-warning">Cancel</button>
+          <button id="visit_next_btn" class="btn btn-success">Next</button>
+        </div>
+      </div><!-- visit_info  -->
+
+<!-- ********************************************************************************************  -->
+
+
+      <div id="visitor_signature">
+        <h1><img class="smlogo" src="images/microhealth-logo.svg" /></h1>
+        <h2>Visit Agreement</h2>
+        <div class="complete_msg" id="signature_complete_msg">Your signature is required!</div>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <textarea class="form-control" id="signature_agreement" rows="10" readonly>agreement agreement agreement agreement agreement agreement agreement agreement agreement agreement agreement agreement agreement agreement agreement agreement agreement agreement agreement</textarea>
+          </div>
+        </div>
+
+        <div class="row" id="person_signature_div">
+          <div class="col-xs-12">
+            <label for="person_signature">Input your signature in the box below:</label>
+          </div>
+          <div class="col-xs-12">
+            <input type="text" class="form-control" id="person_signature" name="person_signature">
+          </div>
+          <div id="person_signature_src_div" hidden>
+            <input id="person_signature_url">
+          </div>
+        </div>
+
+        <div class="buttonrow">
+          <button id="signature_back_btn" class="btn btn-primary">Back</button>
+          <button id="signature_cancel_btn" class="btn btn-warning">Cancel</button>
+          <button id="signature_next_btn" class="btn btn-success">Next</button>
+        </div>
+      </div><!-- visitor_signature  -->
+
+<!-- ********************************************************************************************  -->
+
+      <div id="visit_summary">
+        <h1><img class="smlogo" src="images/microhealth-logo.svg" /></h1>
+        <h2>Visit Summary</h2>
+        <div id="missed_signout_msg">You forgot to sign out of your last visit. Please sign out before signing in.</div>
+
+        <div class="row firstelement">
+          <div class="col-xs-4 col-sm-4 col-md-3" id="display_photo_div">
+            <img id="display_photo" src="images/person.jpg">
+          </div>
+          <div class="col-xs-8 col-sm-8 col-md-9" id="person_info">
+            <table>
+              <tr>
+                <td>Name:</td><td><span id="display_name"></td>
+              </tr>
+              <tr>
+                <td>Company:</td><td><span id="display_company"></td>
+              </tr>
+              <tr>
+                <td>Phone:</td><td><span id="display_phone"></td>
+              </tr>
+              <tr>
+                <td>Email:</td><td><span id="display_email"></td>
+              </tr>
+              <tr>
+                <td>Visit Reason:</td><td><span id="display_reason"></td>
+              </tr>
+              <tr>
+                <td>Person Visiting:&nbsp;&nbsp;&nbsp;</td><td><span id="display_personvisit"></td>
+              </tr>
+              <tr>
+                <td>US Citizen:</td><td><span id="display_citizen"></td>
+              </tr>
+              <tr>
+                <td>Classified:</td><td><span id="display_classified"></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="row" id="display_date_div">
+          <div class="col-xs-12 col-sm-6">
+            <p>Date: <span id="display_date_in"></span></p>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <p>Time In: <span id="display_time_in"></span></p>
+          </div>
+        </div>
+
+        <div class="row" id="time_in_div" hidden>
+          <div class="col-xs-12 col-sm-3">
+            <label for="datetime_in">Time In:</label>
+          </div>
+          <div class="col-xs-12 col-sm-9">
+            <input type="text" class="form-control" id="datetime_in" name="datetime_in" readonly>
+          </div>
+        </div>
+        <div class="row" id="time_out_div">
+          <div class="col-xs-12 col-sm-6">
+            <p id="missed_timeout">Please input time out.</p>
+          </div>
+          <div class="col-xs-4 col-sm-3">
+            <label for="datetime_out">Time Out:</label>
+          </div>
+          <div class="col-xs-8 col-sm-3">
+            <input type="text" class="form-control" id="datetime_out" name="datetime_out" readonly>
+          </div>
+        </div>
+
+        <div class="buttonrow">
+          <button id="summary_back_btn" class="btn btn-primary">Back</button>
+          <button id="summary_cancel_btn" class="btn btn-warning">Cancel</button>
+          <button id="signin_btn" class="btn btn-success">Sign In</button>
+          <button id="signout_btn" class="btn btn-success">Sign Out</button>
+        </div>
+
+      </div><!-- visit_summary  -->
+
+    </div>
+  </form>
+
+</div><!-- main  -->
+
+
+  <script src="js/visitors_sign_form.js"></script>
+
+
+</body>
+</html>

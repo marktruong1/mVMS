@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>mVMS</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/moment.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-theme2.css">
+  <link rel="stylesheet" href="css/mvms_style.css">
+</head>
+<body>
+
+<div id="admincont" class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4" id="sidebar">
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </div>
+
+    <div class="col-xs-12 col-sm-8" id="container">
+      <div id="login_div">
+
+        <h1><img class="smlogo" src="images/microhealth-logo.svg" /></h1>
+
+        <h2>Visitor Management System</h2>
+        <p>&nbsp;</p>
+
+        <form id="login_form">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-xs-3 col-md-2">
+                <label for="username">Username:</label>
+              </div>
+              <div class="col-xs-9 col-md-10">
+                <input type="text" class="form-control" id="username" />
+              </div>
+            </div>
+            <p>&nbsp;</p>
+            <div class="row">
+              <div class="col-xs-3 col-md-2">
+                <label for="password">Password:</label>
+              </div>
+              <div class="col-xs-9 col-md-10">
+                <input type="password" class="form-control" id="password" />
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class="buttonrow">
+          <p>
+            <button id="login_btn" class="btn btn-success">Log In</button>
+          </p>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $("#login_btn").click(function () {
+            if (($("#username").val().trim() !== "") && ($("#password").val() !== "")) {
+                if ($("#password").val() === "admin") {
+                    window.location.href = "alerts.html"; //NOTE: Alerts made default screen for Admin
+                } else if ($("#password").val() === "recept") {
+                    window.location.href = "visitors.html";
+                } else if ($("#password").val() === "manager") {
+                    window.location.href = "reports.html?admin=no";
+                } else {
+                    window.location.href = "index.html";
+                }
+            } else {
+                alert("Complete Log In Form!");
+            }
+        });
+    });
+
+</script>
+</body>
+</html>

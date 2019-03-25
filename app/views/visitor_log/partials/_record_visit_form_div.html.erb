@@ -1,0 +1,111 @@
+<div id="record_visit_form_div">
+  <button id="close_record_visit_form_btn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+  <form id="record_visit_form">
+    <div class="form-group">
+      <h2>Record Person Visit</h2>
+
+      <div class="row" hidden>
+        <div class="col-xs-12">
+          <input type="text" class="form-control" id="record_visit_id" name="record_visit_id">
+        </div>
+      </div>
+
+      <div class="row" hidden>
+        <div class="col-xs-12">
+          <input type="text" class="form-control" id="record_person_id" name="record_person_id" readonly>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-3 col-md-3">
+          <label for="record_person_name">Name:</label>
+        </div>
+        <div class="col-xs-12 col-sm-9 col-md-9">
+          <input type="text" class="form-control" id="record_person_name" name="record_person_name">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-3 col-md-3">
+          <label for="reason_visiting">Visit Reason:</label>
+        </div>
+        <div class="col-xs-12 col-sm-9 col-md-9">
+          <input type="text" class="form-control" id="record_reason" name="record_reason">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-3 col-md-3">
+          <label for="person_visiting">Person Visiting:</label>
+        </div>
+        <div class="col-xs-12 col-sm-9 col-md-9">
+          <%= select_tag :person_visiting, options_for_select(Person.order('name ASC').pluck(:name) ), class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-4 col-sm-3">
+          <p class="formlabel">U.S. Citizen:</p>
+        </div>
+        <div class="col-xs-4 col-sm-5">
+          <div class="form-check">
+            <label class="form-check-label" for="citizen_yes" id="citizen_yes_label">
+              <input type="radio" class="form-check-input" name="citizen" id="citizen_yes" value="yes">
+              Yes</label>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <div class="form-check">
+            <label class="form-check-label" for="citizen_no" id="citizen_no_label">
+              <input type="radio" class="form-check-input" name="citizen" id="citizen_no" value="no">
+              No</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-4 col-sm-3">
+          <p class="formlabel">Classified:</p>
+        </div>
+        <div class="col-xs-4 col-sm-5">
+          <div class="form-check">
+            <label class="form-check-label" for="classified_yes" id="classified_yes_label">
+              <input type="radio" class="form-check-input" name="classified" id="classified_yes" value="yes">
+              Yes</label>
+          </div>
+        </div>
+        <div class="col-xs-4 col-sm-4">
+          <div class="form-check">
+            <label class="form-check-label" for="classified_no" id="classified_no_label">
+              <input type="radio" class="form-check-input" name="classified" id="classified_no" value="no">
+              No</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-3">
+          <label for="record_datetime_in">Signed In:</label>
+        </div>
+        <div class="col-xs-12 col-sm-9">
+          <input type="text" class="form-control" id="record_datetime_in" name="record_datetime_in" readonly>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-3">
+          <label for="record_datetime_out">Signed Out:</label>
+        </div>
+        <div class="col-xs-12 col-sm-9">
+          <input type="text" class="form-control" id="record_datetime_out" name="record_datetime_out" readonly>
+        </div>
+      </div>
+
+      <div class="buttonrow">
+        <button type="reset" id="record_visit_cancel_btn" class="btn btn-warning">Cancel</button>
+        <button type="submit" id="record_visit_submit_btn" class="btn btn-success">Create</button>
+      </div>
+    </div>
+  </form>
+</div><!-- record_visit_div  -->
+
+

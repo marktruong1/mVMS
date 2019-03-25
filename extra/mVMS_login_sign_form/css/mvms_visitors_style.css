@@ -1,0 +1,116 @@
+body {font-family:Arial,Helvetica,sans-serif;font-size:1.75em;}
+.blueback {background-color:#265a88;}
+.ltblueback {background-color:#ebf3f9;}
+#main, #main2 {width:100%;max-width:1024px;margin:auto;padding:0;background-color:#ffffff;background-color:transparent;vertical-align:middle;}
+#main2 {padding:10px 0 20px 0;}
+
+#visitintro_div {margin:auto;padding:10px;background-color:#ffffff;}
+#signbtns_div {margin:0 auto;background-color:rgba(43,125,187,1);}
+#signbtns {margin:0;}
+.mainbtn {margin-top:20px;text-align:center;}
+
+#visitintro_div h1 {font-size:3em;font-family:Verdana,Arial,Helvetica,sans-serif;text-align:center;color:#265a88;letter-spacing:6px;}
+#visitintro_div h2 {text-align:center;margin-top:0px;margin-left:-6%;margin-bottom:10px;}
+#visitintro_div h3 {margin-top:30px;font-size:2em;font-family:Verdana,Arial,Helvetica,sans-serif;text-align:center;color:#265a88;}
+#signbtns_div h4 {margin-top:140px;font-size:2em;font-family:Verdana,Arial,Helvetica,sans-serif;text-align:center;color:#ffffff;}
+#signin_message, #signout_message {padding:20px;}
+#signin_message h1, #signout_message h1 {margin:0 auto 20px -6%;text-align:center;}
+#signin_message h2, #signout_message h2 {margin:0 auto 10px auto;font-size:2em;font-family:Verdana,Arial,Helvetica,sans-serif;text-align:center;color:#419641;}
+#signin_message h3, #signout_message h3 {margin:0 auto 0 auto;font-size:1.75em;font-family:Arial,Helvetica,sans-serif;text-align:center;color:#265a88;}
+}
+
+p.badgelogo {text-align:center;}
+#header {background-color:black;width:100%;}
+#sidebar {background-color:black;margin-top:0;margin-left:0;}
+.hdrbtns {text-align:right;}
+#visitor_sign_form h1 {margin-top:0;float:right !important; text-align:right;}
+.smlogo {width:10em;height:3em;}
+#visitor_sign_form h2 {float:left !important; margin:48px 20px 60px 0;font-size:2em;font-family:Verdana,Arial,Helvetica,sans-serif;text-align:left;color:#419641;}
+#contact_info, #visit_info, #capture_photo, #visitor_signature, #visit_summary {width:90%;margin:0 auto 20px auto;}
+.firstelement {clear:both;}
+#visitor_sign_form label {margin-top:10px;margin-bottom:30px;font-size:1.25em;font-weight:normal;font-weight:bold;}
+#visitor_sign_form p.formlabel {margin-top:20px;margin-bottom:10px;font-size:1.25em;font-weight:normal;font-weight:bold;}
+#visitor_sign_form input, #visitor_sign_form select {font-family:Arial,Helvetica,sans-serif;font-size:1.5em;height:2em;}
+#visitor_sign_form .form-check-label {width:4em;background-color: #dddddd;margin-top:0px;border:2px solid #cccccc;padding:0 10px 10px 10px;font-weight:normal;}
+#visitor_sign_form .form-check-input {margin-top:-10px;margin-bottom:10px;font-size:1em;}
+#recognize_instructions, #capture_instructions {clear:both;}
+#signin_check_visit, #update_contact_info_div {display:none;}
+#photo_div, #display_photo_div {margin-top:0;margin-bottom:10px;}
+#photo_div {width:48%;border:2px solid #cccccc;text-align:center;background-color:#ffffff;}
+#display_photo {margin-top:0;width:200px;height:220px;border:2px solid #cccccc;}
+#person_signature_div {margin-top:20px;}
+#visitor_sign_form #person_signature {height:3em;}
+table tr td {font-size:1.25em;}
+.btn {margin:20px 0 0 40px;width:6em;height:2.5em;font-size:1.5em;display:inline-block;}
+.signbtn {margin:40px auto 40px auto;width:4em;height:4em;font-size:3em;display:inline-block;}
+
+.readonly_contact {background-color:#efefef;}
+#contact_back_btn, #visit_back_btn, #signature_back_btn, #summary_back_btn, #exit_btn {margin-left:0px;}
+.buttonrow {margin-top:10px;text-align:right;}
+.buttonrow2 {margin-top:0px;text-align:center;}
+#visitor_badge {width:384px;height:223px;margin:0px auto 20px auto;padding-top:20px;border:1px solid gray;background-color:#ffffff;}
+#visitor_badge p {font-size:1.25em;font-family:Arial,Helvetica,sans-serif;font-weight:normal;color:black;text-align:left;border:none;box-shadow:none;margin:0 0 10px 60px;padding:0;}
+.nobreak {white-space: nowrap;}
+
+#signin_message h4, #signout_message h4 {margin:30px auto 20px auto;font-size:1.5em;font-family:Arial,Helvetica,sans-serif;text-align:center;color:#333333;}
+
+#capture_person_msg {font-size:1.5em;color:#eb9316;}
+#signin_capture_msg, #signout_capture_msg {font-size:1.5em;display:none;}
+#capture_instructions {margin-bottom:30px;}
+#signature_agreement {background-color:#ffffff;font-size:1.25em;}
+#missed_signout_msg {clear:both;margin-top:0;margin-bottom:20px;font-size:1.5em;color:#c12e2a;display:none;}
+#missed_timeout {font-size:1.5em;color:#c12e2a;}
+#display_date_div {margin:30px 0 20px 0;display:none;}
+#display_date_div p {font-size:1.5em;font-family:Arial,Helvetica,sans-serif;text-align:left;color:#265a88;}
+#time_out_div label {color:#265a88;font-family:Arial,Helvetica,sans-serif;font-size:1.5em;font-weight:normal;}
+
+#camera_msg {margin-top:60px;margin-bottom:20px;font-size:1.5em;}
+
+.complete_msg {clear:both;margin-top:0;margin-bottom:20px;font-size:1.25em;font-weight:bold;color:#eb9316;display:none;}
+
+#time_out_div {margin:0 auto;display:none;}
+
+
+#update_contact_label.form-check-label{width:22em;}
+
+
+#visitors_log_table.two-axis tr td:first-of-type {
+  background: #eeeeee;
+}
+
+
+@media only screen and (max-width: 1030px) {
+  #visitors_log_table.two-axis tr td:first-of-type,
+  #visitors_log_table.two-axis tr:nth-of-type(2n+2) td:first-of-type,
+  #visitors_log_table.two-axis tr td:first-of-type:before
+  {
+    background: #ebf3f9;
+  }
+  #visitors_log_table.two-axis tr td:first-of-type {
+    border-bottom: 1px solid #e4ebeb;
+  }
+}
+
+@media all and (max-width:991.98px) {
+  body {font-size:1.5em;}
+  .smlogo {width:7em;height:2.5em;}
+  #visitor_sign_form h2 {margin:36px 20px 60px 0;}
+}
+
+@media all and (max-width:767.98px) {
+  body {font-size:1.25em;}
+  #visitintro_div h1 {font-size:2.5em;letter-spacing:3px;}
+  .lglogo {width:12em;height:3.5em;}
+  #visitor_sign_form h2 {float:none;clear:both; margin:0px 20px 20px 0;}
+  #signbtns_div h4 {margin-top:80px;font-size:2em;}
+  label {margin-top:30px !important;margin-bottom:10px !important;}
+  #visitor_sign_form p.formlabel {margin-top:40px;margin-bottom:10px;}
+  .btn {margin:20px 0 0 20px;width:4.75em;height:2em;font-size:1.5em;display:inline-block;}
+  .signbtn {margin:40px auto 40px auto;width:3.5em;height:3.5em;font-size:2.5em;display:inline-block;}
+  .buttonrow {margin-top:30px;text-align:right;}
+}
+
+@media all and (max-width:639.98px) {
+  #display_photo_div {float:none !important;width:100% !important;}
+  #person_info {float:none !important;width:100% !important;}
+}

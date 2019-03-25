@@ -1,0 +1,31 @@
+<table style="width: 100%" class="table  table-responsive display responsive nowrap" id="users_table">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th><%= t :login %></th>
+    <th><%= t :email %></th>
+
+
+
+  </tr>
+  </thead>
+
+  <tbody>
+  <% User.all.each do |user| %>
+  <tr>
+    <td><%= link_to user.id, user %></td>
+    <td><%= user.email %></td>
+    <td><%= user.name %></td>
+  </tr>
+  <% end %>
+
+  </tbody>
+</table>
+
+<script>
+  $(document).ready(function(){
+    var table = $('#users_table').DataTable({
+
+    })
+  } );
+</script>

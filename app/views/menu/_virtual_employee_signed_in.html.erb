@@ -1,0 +1,11 @@
+<ul>
+  <% if can?(:manage_roles) %>
+      <li class="<%= menu_active?('employees') %>">
+        <a href="<%= employees_path %>" title="<%= t 'label_search' %>"><i class="fa fa-lg fa-fw fa-users"></i> <span class="menu-item-parent"><%= t :label_search %></span></a>
+      </li>
+  <% end %>
+
+  <li class="<%= menu_active?('employees') %>">
+    <a href="<%= employee_path(User.current) %>" title="<%= t('profile.profile') %>"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent"><%= t('profile.profile') %></span></a>
+  </li>
+</ul>

@@ -1,0 +1,189 @@
+<head>
+  <meta charset="utf-8">
+  <!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
+
+  <title> <%= Setting['application_name'] %> </title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <!-- Basic Styles -->
+
+
+  <%= stylesheet_link_tag  'admin/application', media: 'all', 'data-turbolinks-track'=> 'reload' %>
+  <%= javascript_include_tag 'admin/application', 'data-turbolinks-track'=> 'reload' %>
+
+  <meta name="turbolinks-cache-control" content="no-cache">
+
+  <%= csrf_meta_tags %>
+
+  <style>
+    body {
+        font-size: 15px;    
+    }
+
+    .smart-style-5
+    {
+      background: url(/assets/glass.jpg) no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+
+    .smart-style-3 #header {
+      background-color: #dddddd;
+      background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#dddddd), to(#dddddd));
+      background-image: -webkit-linear-gradient(top, #dddddd, #dddddd);
+      background-image: linear-gradient(to bottom, #dddddd, #dddddd);
+    }
+
+    .smart-style-3 .btn-header>:first-child>a {
+      background-color: #DD7C37;
+      background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#dd7c37), to(#dd7c37));
+      background-image: -webkit-linear-gradient(top, #dd7c37, #dd7c37);
+      background-image: linear-gradient(to bottom, #dd7c37, #dd7c37);
+      color: #fff !important;
+      border: 1px solid #dd7c37;
+      text-shadow: none;
+    }
+   
+    .smart-style-1 .btn-header>:first-child>a {
+      background: #dd7c37;
+      border: 1px solid #dd7c37;
+      color: #fff !important;
+      cursor: pointer !important;
+    }
+
+   
+    h2 {
+        font-size: 24px;
+    }
+    .form-control {
+        font-size: 15px; 
+    }
+
+    .btn {
+        font-size: 15px; 
+    }
+
+    .table thead tr {
+        font-size: 14px; 
+    }
+
+    .dropdown-menu {
+        min-width: 170px;
+        font-size: 15px;
+    }
+
+    .login-info a span {
+        font-size: 14px; 
+    }
+ 
+    abbr[title] {
+      border-bottom: none;
+      text-decoration: none;
+    }
+
+    .jarviswidget-color-blueLight>header {
+      border-color:#a0aeb3 !important;background:#B2C8D6;
+    }
+   .jarviswidget>header h2 {
+        font-size: 18px;
+    }
+
+    .jarviswidget>div {
+        font-size: 15px;
+    }
+
+    .ui-tabs .ui-tabs-nav li a {
+      background-color:#4D7484;color:#ffffff;border:none;box-shadow: none;
+    }
+    .ui-tabs .ui-tabs-nav li a:hover {
+      border:none;background-color:#DBC2A4;color:#000000;box-shadow: none;
+    }
+    .ui-tabs .ui-tabs-nav li.ui-tabs-active:hover {
+      background:#dd7c37;cursor:text;
+    }
+    .ui-tabs .ui-tabs-nav .ui-tabs-anchor {
+      background-color:#4D7484;
+    }
+    .ui-tabs .ui-tabs-nav li.ui-tabs-active {
+      margin-top: 4px;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .ui-tabs .ui-tabs-nav li.ui-tabs-active a {
+      background-color:#dd7c37;color:#ffffff;border:none;margin-top: 0px !important;
+      font-weight: 400; box-shadow: none;
+    }
+    .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+      background: #ffffff;
+    }
+    .jarviswidget-color-blueLight .nav-tabs li:not(.active) a {
+        color: white !important;
+    }
+    .jarviswidget-color-blueLight .nav-tabs li a:hover {
+        color: black !important;
+    }  
+    
+   .ui-tabs .ui-tabs-nav {
+    border: solid #dd7c37;
+    border-width: 0 0 3px;
+    border-radius: 0;
+    background: 0 0;
+    }
+    .ui-tabs .ui-tabs-nav li a:hover, .ui-tabs .ui-tabs-nav li.ui-tabs-active:hover, .jarviswidget-color-blueLight .nav-tabs li a:hover {
+      color:#000000;box-shadow: none;border:none;
+    }
+   
+    .ui-tabs .ui-tabs-nav li {
+      margin: 4px 1px 0 1px;
+      border: none;
+    }
+    .ui-tabs .ui-tabs-nav li a {
+      border: none;box-shadow: none;
+    }
+
+
+    nav ul li a, .smart-style-3 nav>ul>li>a, .smart-style-1 nav ul ul li>a {
+        font-size: 15px; 
+    }
+
+    .page-footer span {
+        font-size: 1.125em; 
+    }
+
+    div.dataTables_info {
+        font-size: 14px; 
+    }
+
+    .pagination-sm>li>a {
+        font-size: 14px; 
+    }
+    
+    #logo-group>span {
+        font-size: 24px; 
+    }
+    
+   .ui-widget-content, .ui-widget.ui-widget-content {
+     border: none;
+    }
+  </style>
+  <!-- We recommend you use "your_style.css" to override SmartAdmin
+       specific styles this will also ensure you retrain your customization with each SmartAdmin update.
+  <link rel="stylesheet" type="text/css" media="screen" href="css/your_style.css"> -->
+
+  <!-- FAVICONS -->
+  <%= favicon_link_tag 'favicon.ico' %>
+
+
+  <!-- Specifying a Webpage Icon for Web Clip
+
+  <!-- iOS web-app metas : hides Safari UI Components and Changes Status Bar Appearance -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+
+</head>

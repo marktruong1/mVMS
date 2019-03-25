@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>mVMS</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/moment.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/bootstrap-datetimepicker.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-theme2.css">
+  <link rel="stylesheet" href="css/mvms_visitors_style.css">
+</head>
+<body class="blueback">
+
+<div id="main" class="container">
+  <div id="visitintro_div">
+    <h1>WELCOME VISITORS</h1>
+    <h3>TO</h3>
+    <h2><img class="lglogo" src="images/microhealth-logo.svg" /></h2>
+  </div>
+
+  <div id="signbtns_div" style="padding:0;background-color: rgba(43,125,187,1);background-image: url('images/triangle.jpg');background-repeat:no-repeat;background-position:center;">
+    <div class="row" id="signbtns">
+      <div class="col-xs-5 mainbtn">
+        <button id="signin_btn" class="btn btn-success signbtn">Sign<br>In</button>
+      </div>
+      <div class="col-xs-2">
+        <h4>OR</h4>
+      </div>
+      <div class="col-xs-5 mainbtn">
+        <button id="signout_btn" class="btn btn-warning signbtn">Sign<br>Out</button>
+      </div>
+    </div>
+  </div>
+</div><!-- main -->
+
+<script>
+  $("#signin_btn").click(function () {
+    window.location.href = "visitor_sign_form.html?signin";
+  });
+  $("#signout_btn").click(function () {
+    window.location.href = "visitor_sign_form.html?signout";
+  });
+  $("#missed_btn").click(function () {
+    window.location.href = "visitor_sign_form.html?missed_signout";
+  });
+  $("#print_btn").click(function () {
+    alert('Print');
+  });
+  $("#done_btn").click(function () {
+    alert('Done');
+  });
+  $("#cancel_btn").click(function () {
+    alert('Cancel');
+  });
+  $("#exit_btn").click(function () {
+    alert('Exit');
+  });
+  $("#ready_btn").click(function () {
+    alert('Ready');
+  });
+  $("#back_btn").click(function () {
+    alert('Back');
+  });
+  $("#next_btn").click(function () {
+    alert('Next');
+  });
+</script>
+</body>
+</html>

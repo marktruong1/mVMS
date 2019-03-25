@@ -1,0 +1,15 @@
+<% if module_enabled?('user_subscription') %>
+    <ul>
+      <li>
+        <a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">User</span></a>
+        <ul>
+          <li>
+            <%= link_to "Log in", new_session_path(:user) %>
+          </li>
+          <li>
+            <%= link_to "Sign up", new_registration_path(:user) %>
+          </li>
+        </ul>
+      </li>
+    </ul>
+<% end %>

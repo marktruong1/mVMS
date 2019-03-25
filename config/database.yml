@@ -1,0 +1,18 @@
+production:
+  adapter: mysql2
+  database: mvms_prod
+  host: localhost
+  username: root
+  password: S1mul4ti0n!!!
+  encoding: utf8
+
+development:
+  adapter: mysql2
+  database: mvms_dev
+  host: localhost
+  username: root
+  password: admin
+  encoding: utf8
+  pool: 25
+
+

@@ -1,0 +1,24 @@
+<% @recently_connected.each do |user | %>
+    <a href="<%= "/chat_rooms/create_or_find?user_id=#{user.id}" %>" class="usr"
+       data-chat-id="cha1"
+       data-chat-fname="<%= user.first_name || user.login %>"
+       data-chat-lname="<%= user.last_name %>"
+       data-chat-status="online"
+       data-chat-alertmsg=""
+       data-chat-alertshow="true"
+       data-rel="popover-hover"
+       data-placement="right"
+       data-html="true"
+       data-content="
+											<div class='usr-card'>
+												<%= "#{avatar(user)}" %>
+												<div class='usr-card-content'>
+													<h3><%= user.login %></h3>
+													<p></p>
+												</div>
+											</div>
+										"
+    >
+      <i></i><%= user.profile_name.strip.presence || user.login %>
+    </a>
+<% end %>

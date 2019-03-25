@@ -1,0 +1,60 @@
+<div id="export_form_div">
+  <button id="close_export_div_btn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+  <form id="export_form">
+    <div class="form-group">
+      <h2>Export Activity Data</h2>
+      <div class="row">
+        <div class="col-xs-12 col-sm-2">
+          <label for="export_date_from">Date From:</label>
+        </div>
+        <div class="col-xs-12 col-sm-10">
+          <input type="text" class="form-control" id="export_date_from" name="export_date_from">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-2">
+          <label for="export_date_to">Date To:</label>
+        </div>
+        <div class="col-xs-12 col-sm-10">
+          <input type="text" class="form-control" id="export_date_to" name="export_date_to">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-2">
+          <label for="export_size">Size:</label>
+        </div>
+        <div class="col-xs-12 col-sm-10">
+          <select class="form-control" id="export_size" name="export_size">
+            <option value="0" selected>Select All</option>
+            <option value="1">Size 1</option>
+            <option value="2">Size 2</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-3">
+          <label for="export_company_filter">Company Filter:</label>
+        </div>
+        <div class="col-xs-12 col-sm-9">
+          <input type="text" class="form-control" id="export_company_filter" name="export_company_filter">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-check">
+            <label class="form-check-label" for="rejected_passes" id="rejected_passes_label">
+              <input type="checkbox" class="form-check-input" name="rejected_passes" id="rejected_passes" value="true">
+              Export Rejected Passes only</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="buttonrow">
+        <button type="reset" id="export_reset_btn" class="btn btn-warning">Reset</button>
+        <button type="submit" id="export_submit_btn" class="btn btn-success">Submit</button>
+      </div>
+    </div>
+  </form>
+</div><!-- export_form_div  -->

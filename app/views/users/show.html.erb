@@ -1,0 +1,10 @@
+<div class="row" style="margin-bottom: 10px">
+  <div class="col-md-12 ">
+    <div class="pull-right">
+      <%= show_button(users_path, 'Cancel', 'reply', 'primary') %>
+    </div>
+  </div>
+</div>
+
+<h1><%= @user.name %></h1>
+<%= render_tabs user_admin_show_page %>

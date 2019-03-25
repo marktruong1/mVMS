@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  visitor_id: 1
+  date: 2018-06-20 12:45:54
+  visit_reason: MyString
+  person_visiting_id: 1
+  us_citizen: false
+  classified: false
+
+two:
+  visitor_id: 1
+  date: 2018-06-20 12:45:54
+  visit_reason: MyString
+  person_visiting_id: 1
+  us_citizen: false
+  classified: false

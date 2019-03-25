@@ -1,0 +1,61 @@
+<div id="visitor_form_div">
+  <button id="close_visitor_form_btn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+  <form id="visitor_form">
+    <div class="form-group">
+      <h2>Visitor Form</h2>
+
+      <div class="row" hidden>
+        <div class="col-xs-12">
+          <input type="text" class="form-control" id="visitor_sign_id" name="visitor_sign_id" readonly>
+        </div>
+      </div>
+
+      <div class="row" hidden>
+        <div class="col-xs-12">
+          <input type="text" class="form-control" id="visitor_person_id" name="visitor_person_id" readonly>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-2 col-md-2">
+          <label for="visitor_person_name">Name:</label>
+        </div>
+        <div class="col-xs-12 col-sm-10 col-md-10">
+          <input type="text" class="form-control" id="visitor_person_name" name="visitor_person_name" readonly>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-2 col-md-2">
+          <label for="company">Company:</label>
+        </div>
+        <div class="col-xs-12 col-sm-10 col-md-10">
+          <input type="text" class="form-control" id="company" name="company" readonly>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-2 col-md-2">
+          <label for="phone">Phone:</label>
+        </div>
+        <div class="col-xs-12 col-sm-10 col-md-10">
+          <input type="text" class="form-control" id="phone" name="phone" readonly>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-2 col-md-2">
+          <label for="email">Email:</label>
+        </div>
+        <div class="col-xs-12 col-sm-10 col-md-10">
+          <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" readonly>
+        </div>
+      </div>
+      <div class="buttonrow">
+        <button type="reset" id="visitor_cancel_btn" class="btn btn-warning">Cancel</button>
+        <button type="submit" id="visitor_submit_btn" class="btn btn-success">Create</button>
+      </div>
+    </div>
+  </form>
+</div><!-- visitor_div  -->
+

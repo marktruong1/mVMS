@@ -1,0 +1,93 @@
+$mh-blue1: #3276b1;
+$mh-blue2: #80affc;
+$mh-blue3: #5492f7;
+$mh-white: #f5f5f5;
+$mh-black: black;
+
+/* ----------- iPhone 5 and 5S ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .module-title {
+      text-align: center;
+    }
+    .filter-tab, .actions-tab {
+      padding: .7em;
+      font-size: .7em;
+    }
+}
+
+/* ----------- iPhone 6 ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .module-title {
+      text-align: center;
+    }
+    .filter-tab, .actions-tab {
+      padding: .8em;
+      font-size: .8em;
+    }
+}
+
+/* ----------- Laptops ----------- */
+
+@media only screen and (min-width: 768px) {
+  .filter-tab, .actions-tab {
+    padding: 10px 15px;
+    letter-spacing: 2px;
+  }
+}
+
+.module-title-text {
+  color: $mh-blue1;
+  letter-spacing: 2px;
+}
+
+.tabs-section {
+  padding-left: 0px;
+}
+
+.tabs-section button:first-child {
+  margin-left: 0px;
+}
+
+.filter-tab {
+  background-color: $mh-blue1;
+}
+
+.actions-tab {
+  background-color: $mh-blue2;
+}
+
+ul.dropdown-links {
+  background-color: $mh-blue3;
+}
+
+ul.dropdown-links li {
+  display: inline;
+  padding: 1px 10px;
+}
+
+ul.dropdown-links a{
+  display: inline-block;
+  color: $mh-white;
+}
+
+ul.dropdown-links a:hover{
+  color: $mh-black;
+  font-style: italic;
+  background-color: transparent;
+}
+
+.dropdown-item-dividier {
+  margin: 5px 11px;
+  border-bottom: 1px solid skyblue;
+}
+

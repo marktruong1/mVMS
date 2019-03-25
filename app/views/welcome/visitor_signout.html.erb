@@ -1,0 +1,118 @@
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/js/jquery-ui.min.js"></script>
+<script src="/js/moment.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/bootstrap-datetimepicker.min.js"></script>
+
+<!--  <script src="js/seeds.js"></script> -->
+<script type="text/javascript">
+    var visitors = <%= raw @visitors.pluck(:email) %>
+        $(function () {
+            $("#capture_person_name").autocomplete({
+                source: visitors
+            });
+        });
+</script>
+<link rel="stylesheet" href="/css/jquery-ui.min.css">
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/bootstrap-theme2.css">
+<link rel="stylesheet" href="/css/autocomplete.css">
+<link rel="stylesheet" href="/css/mvms_visitors_style.css">
+<body class="ltblueback">
+
+<div id="main2" class="container">
+  <% if request.get? %>
+      <form id="visitor_sign_form" autocomplete="off" method="post">
+        <div class="form-group">
+
+          <div id="capture_photo">
+            <h1><a href='/'> <img class="smlogo" src="/images/microhealth-logo.svg" /></a></h1>
+            <div class="complete_msg" id="capture_complete_msg">Must complete form!</div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-3 col-md-2">
+                <label for="capture_person_name">Email:</label>
+              </div>
+              <div class="col-xs-12 col-sm-9 col-md-10">
+                <input type="text" class="form-control" id="capture_person_name" name="name">
+              </div>
+              <div class="col-xs-12">
+                <p><span id="capture_person_msg"></span></p>
+              </div>
+            </div>
+
+            <div class="buttonrow">
+              <a href="/" > <button class="btn btn-warning" > Cancel</button></a>
+              <button id="capture_next_btn" class="btn btn-success">Next</button>
+            </div>
+          </div><!-- capture_photo  -->
+        </div>
+      </form>
+      <script>
+          $(document).ready(function(){
+              $(document).keypress(function(e) {
+                  var keycode = (e.keyCode ? e.keyCode : e.which);
+                  if (keycode == '13') {
+                      $('#capture_next_btn').trigger('click')
+                  }
+              });
+          })
+      </script>
+  <% else %>
+      <!-- ********************************************************************************************  -->
+      <div id="visit_summary">
+        <h1><a href='/'> <img class="smlogo" src="/images/microhealth-logo.svg" /></a></h1>
+        <h2>Visit Summary</h2>
+        <div id="missed_signout_msg">You forgot to sign out of your last visit. Please sign out before signing in.</div>
+
+        <div class="row firstelement">
+          <div class="col-xs-4 col-sm-4 col-md-3" id="display_photo_div">
+            <img src="<%= @visitor.avatar %>" width="250px" style="float: left"/>
+          </div>
+          <div class="col-xs-8 col-sm-8 col-md-9" id="person_info" >
+            <table style="float: right;">
+              <tr>
+                <td>Name:</td><td><span id="display_name"><%= @visitor.name %></span></td>
+              </tr>
+              <tr>
+                <td>Company:</td><td><span id="display_company"><%= @visitor.company.try(:name) %></span></td>
+              </tr>
+              <tr>
+                <td>Phone:</td><td><span id="display_phone"><%= @visitor.phone %></span></td>
+              </tr>
+              <tr>
+                <td>Email:</td><td><span id="display_email"><%= @visitor.email %></span></td>
+              </tr>
+              <tr>
+                <td>Visit Reason:</td><td><span id="display_reason"><%= @visitor.last_visit.visit_reason %></span></td>
+              </tr>
+              <tr>
+                <td>Person Visiting:&nbsp;&nbsp;&nbsp;</td><td><span id="display_personvisit"><%= @visitor.last_visit.person.try(:name) %></span></td>
+              </tr>
+              <tr>
+                <td>US Citizen:</td><td><span id="display_citizen"><%= @visitor.us_citizen? %></span></td>
+              </tr>
+              <tr>
+                <td>Classified:</td><td><span id="display_classified"><%= @visitor.last_visit.classified? %></span></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="row" id="display_date_div">
+          <div class="col-xs-12 col-sm-6">
+            <p>Date: <span id="display_date_in"><%= @visitor.last_visit.sign_in_date.try(:sign_in_date) %></span></p>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <p>Time In: <span id="display_time_in"><%= @visitor.last_visit.strftime('%I:%M %p') rescue nil%></span></p>
+          </div>
+        </div>
+
+        <div class="buttonrow">
+          <%= link_to 'Back', root_path, class: "btn btn-info" %>
+          <%= link_to 'Sign Out', visitor_signout_path(visitor_id: @visitor.id), class: "btn btn-success" %>
+        </div>
+
+      </div>
+
+  <% end %>
+</div>

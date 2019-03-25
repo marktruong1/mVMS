@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>mVMS</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="/js/jquery-3.2.1.min.js"></script>
+  <script src="/js/jquery-ui.min.js"></script>
+  <script src="/js/moment.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/bootstrap-theme2.css">
+  <link rel="stylesheet" href="/css/mvms_style.css">
+
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <style>
+    @media print {
+      @page{
+        margin: 0mm;  }
+      html, body {
+        /*changing width to 100% causes huge overflow and wrap*/
+        height: 100%;
+        overflow: hidden;
+        background: #FFF;
+        /*font-size: 9.5pt;*/
+      }
+      body, html { margin: 0 !important; padding: 0 !important; }
+
+      #visitor_badge{
+        width: 290px !important;
+        height: 180px !important;
+        padding-top: 0px !important;
+        margin: 10px 10px 10px 10px;
+        page-break-before: none;
+        page-break-after: none;
+        page-break-inside: avoid;
+        overflow: hidden;
+      }
+      .no_print {
+        display: none;
+      }
+      .myDivToPrint {
+        border: 0 !important;
+        -webkit-transform: rotate(-90deg);
+        -moz-transform: rotate(-90deg);
+        -o-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+        background-color: white;
+        height: 100vh;
+        width: 100vw;
+        position: fixed;
+        margin-top: 40px !important;
+        margin-left: -50px !important;
+        left: 0;
+        padding: 15px;
+        font-size: 14px;
+        line-height: 18px;
+      }
+
+      .myDivToPrint p{
+        padding-top: 4px!important;
+        /*line-height: 3px*/
+      }
+      hr{
+        margin: 2px;
+        padding: 2px;
+      }
+      #content_badge p{
+        font-size: 10px !important;
+        font-weight: bold;
+        margin-left: 0px !important;
+        /*padding-top: 4px;*/
+      }
+      #title_badge{
+        font-size: 12px !important;
+      }
+      #main{
+        padding: 0!important;
+        margin: 0!important;
+      }
+
+      #visitor_badge img {
+        width: 150px !important;
+        height: 130px!important;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+<%= yield %>
+<style>
+  a.btn {
+    color: white !important;
+  }
+</style>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<div id="capture_photo">
+  <h1><a href='/'> <img class="smlogo" src="/images/microhealth-logo.svg" /></a></h1>
+  <h2 class="recognize_instructions">Photo</h2>
+  <div class="complete_msg" id="capture_complete_msg">Must complete form!</div>
+
+  <div class="row recognize_instructions" id="recognize_instructions">
+    <div class="col-xs-7 col-sm-6" id="camera_msg">
+      Please look at the camera so your face may be recognized.
+    </div>
+    <div class="col-xs-5 col-sm-6" >
+      <div id="person_image_camera" style="width: 250px;height: 320px; overflow: hidden"> </div>
+      <div id="person_image" style="width: 250px;height: 320px; overflow: hidden" hidden> </div>
+    </div>
+    <div id="person_image_src_div" hidden>
+      <input id="person_image_url">
+    </div>
+  </div>
+  <div class="row" id="capture_instructions">
+    <div class="col-xs-12" id="signin_capture_msg">
+      Click the image to take a picture. Repeat until you&rsquo;re satisfied with your photo.
+    </div>
+    <div class="col-xs-12" id="signout_capture_msg">
+      If your face is not recognized within a minute, please enter your name in the box below.
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-3 col-md-2">
+      <label for="capture_person_name">Email:</label>
+    </div>
+    <div class="col-xs-12 col-sm-9 col-md-10">
+      <input type="email" class="form-control" id="capture_person_email" name="capture_person_email" placeholder="name@example.com">
+      </div>
+    <div class="col-xs-12">
+      <p><span id="capture_person_msg"></span></p>
+    </div>
+  </div>
+  <div class="row" hidden>
+    <div class="col-xs-12">
+      <input type="text" class="form-control" id="person_id" name="person_id" readonly>
+    </div>
+  </div>
+
+
+  <div class="buttonrow">
+    <!--<button id="missed_btn" class="btn btn-danger">Missed</button>-->
+    <button id="capture_cancel_btn" class="btn btn-warning">Cancel</button>
+    <button id="capture_next_btn" class="btn btn-success">Next</button>
+  </div>
+</div><!-- capture_photo  -->

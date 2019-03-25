@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>mVMS</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="js/jquery.basictable.min.js"></script>
+  <script src="js/moment.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/bootstrap-datetimepicker.min.js"></script>
+  <script src="js/autocomplete.js"></script>
+  <script src="js/seeds_all_statuses.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $('#filter_date_from, #filter_date_to, #record_datetime_in, #record_datetime_out, #export_date_from, #export_date_to').datetimepicker({
+        format: 'l, LTS'
+      });
+      $("#person_visiting_filter").autocomplete({
+        source: personnel
+      });
+      $("#company_filter").autocomplete({
+        source: companies
+      });
+    });
+
+  </script>
+  <link rel="stylesheet" href="css/jquery-ui.min.css">
+  <link rel="stylesheet" type="text/css" href="css/basictable.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-theme2.css">
+  <link rel="stylesheet" href="css/autocomplete.css">
+  <link rel="stylesheet" href="css/mvms_style.css">
+</head>
+<body>
+
+
+<div class="header">
+<!-- NOTE: Has hidden display because preregistration is not being used for now!
+  <button id="create_visitor_btn" class="btn btn-primary">Create Visitor</button>
+-->
+  <button id="filter_visitors_btn" class="btn btn-primary"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span>&nbsp;&nbsp;Filter</button>
+  <button id="export_report_btn" class="btn btn-primary"><span class="glyphicon glyphicon-export" aria-hidden="true"></span>&nbsp;&nbsp;Export</button>
+</div>
+
+
+<div id="main3" class="container">
+
+  <div id="visitor_form_div">
+    <button id="close_visitor_form_btn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+    <form id="visitor_form">
+      <div class="form-group">
+        <h2>Visitor Form</h2>
+
+        <div class="row" hidden>
+          <div class="col-xs-12">
+            <input type="text" class="form-control" id="visitor_sign_id" name="visitor_sign_id" readonly>
+          </div>
+        </div>
+
+        <div class="row" hidden>
+          <div class="col-xs-12">
+            <input type="text" class="form-control" id="visitor_person_id" name="visitor_person_id" readonly>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-2 col-md-2">
+            <label for="visitor_person_name">Name:</label>
+          </div>
+          <div class="col-xs-12 col-sm-10 col-md-10">
+            <input type="text" class="form-control" id="visitor_person_name" name="visitor_person_name" readonly>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-2 col-md-2">
+            <label for="company">Company:</label>
+          </div>
+          <div class="col-xs-12 col-sm-10 col-md-10">
+            <input type="text" class="form-control" id="company" name="company" readonly>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-2 col-md-2">
+            <label for="phone">Phone:</label>
+          </div>
+          <div class="col-xs-12 col-sm-10 col-md-10">
+            <input type="text" class="form-control" id="phone" name="phone" readonly>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-2 col-md-2">
+            <label for="email">Email:</label>
+          </div>
+          <div class="col-xs-12 col-sm-10 col-md-10">
+            <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" readonly>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-2 col-md-2">
+            <label for="person_image_src">Person Image Link:</label>
+          </div>
+          <div class="col-xs-12 col-sm-10 col-md-10">
+            <input type="text" class="form-control" id="person_image_src" name="person_image_src" readonly>
+          </div>
+        </div>
+
+        <div class="buttonrow">
+          <button type="reset" id="visitor_cancel_btn" class="btn btn-warning">Cancel</button>
+          <button type="submit" id="visitor_submit_btn" class="btn btn-success">Create</button>
+        </div>
+      </div>
+    </form>
+  </div><!-- visitor_div  -->
+
+
+<!-- ***********************************************************************************************   -->
+
+
+  <div id="record_visit_form_div">
+    <button id="close_record_visit_form_btn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+    <form id="record_visit_form">
+      <div class="form-group">
+        <h2>Record Person Visit</h2>
+
+        <div class="row" hidden>
+          <div class="col-xs-12">
+            <input type="text" class="form-control" id="record_visit_id" name="record_visit_id" readonly>
+          </div>
+        </div>
+
+        <div class="row" hidden>
+          <div class="col-xs-12">
+            <input type="text" class="form-control" id="record_person_id" name="record_person_id" readonly>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-3 col-md-3">
+            <label for="record_person_name">Name:</label>
+          </div>
+          <div class="col-xs-12 col-sm-9 col-md-9">
+            <input type="text" class="form-control" id="record_person_name" name="record_person_name" readonly>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-3 col-md-3">
+            <label for="reason_visiting">Visit Reason:</label>
+          </div>
+          <div class="col-xs-12 col-sm-9 col-md-9">
+            <input type="text" class="form-control" id="reason_visiting" name="reason_visiting" disabled>
+            <select class="form-control" id="record_reason" name="record_reason">
+            <option value="0">Select</option>
+            <option value="1">Reason 1</option>
+            <option value="2">Reason 2</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-3 col-md-3">
+            <label for="person_visiting">Person Visiting:</label>
+          </div>
+          <div class="col-xs-12 col-sm-9 col-md-9">
+            <input type="text" class="form-control" id="person_visiting" name="person_visiting" readonly>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-4 col-sm-3">
+            <p class="formlabel">U.S. Citizen:</p>
+          </div>
+          <div class="col-xs-4 col-sm-5">
+            <div class="form-check">
+              <label class="form-check-label" for="citizen_yes" id="citizen_yes_label">
+              <input type="radio" class="form-check-input" name="citizen" id="citizen_yes" value="yes">
+              Yes</label>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="form-check">
+              <label class="form-check-label" for="citizen_no" id="citizen_no_label">
+              <input type="radio" class="form-check-input" name="citizen" id="citizen_no" value="no">
+              No</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-4 col-sm-3">
+            <p class="formlabel">Classified:</p>
+          </div>
+          <div class="col-xs-4 col-sm-5">
+            <div class="form-check">
+              <label class="form-check-label" for="classified_yes" id="classified_yes_label">
+              <input type="radio" class="form-check-input" name="classified" id="classified_yes" value="yes">
+              Yes</label>
+            </div>
+          </div>
+          <div class="col-xs-4 col-sm-4">
+            <div class="form-check">
+              <label class="form-check-label" for="classified_no" id="classified_no_label">
+              <input type="radio" class="form-check-input" name="classified" id="classified_no" value="no">
+              No</label>
+            </div>
+          </div>
+        </div>
+   
+        <div class="row">
+          <div class="col-xs-12 col-sm-3">
+            <label for="record_datetime_in">Signed In:</label>
+          </div>
+          <div class="col-xs-12 col-sm-9">
+            <input type="text" class="form-control" id="record_datetime_in" name="record_datetime_in" readonly>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-3">
+            <label for="record_datetime_out">Signed Out:</label>
+          </div>
+          <div class="col-xs-12 col-sm-9">
+            <input type="text" class="form-control" id="record_datetime_out" name="record_datetime_out" readonly>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-3">
+            <label for="visit_image_src">Visit Image Link:</label>
+          </div>
+          <div class="col-xs-12 col-sm-9">
+            <input type="text" class="form-control" id="visit_image_src" name="visit_image_src" readonly>
+          </div>
+        </div>
+
+        <div class="buttonrow">
+          <button type="reset" id="record_visit_cancel_btn" class="btn btn-warning">Cancel</button>
+          <button type="submit" id="record_visit_submit_btn" class="btn btn-success">Create</button>
+        </div>
+      </div>
+    </form>
+  </div><!-- record_visit_div  -->
+
+
+<!--- *******************************************************************************************  -->
+
+
+  <div id="filter_form_div">
+    <button id="close_filter_div_btn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+    <form id="filter_signlog_form">
+      <div class="form-group">
+        <h2>Filter Visitors</h2>
+        <div class="row">
+          <div class="col-xs-12 col-sm-2">
+            <label for="filter_date_from">Date From:</label>
+          </div>
+          <div class="col-xs-12 col-sm-10">
+            <input type="text" class="form-control" id="filter_date_from" name="filter_date_from">
+          </div>
+        </div>
+        <div class="row">
+         <div class="col-xs-12 col-sm-2">
+            <label for="filter_date_to">Date To:</label>
+          </div>
+          <div class="col-xs-12 col-sm-10">
+            <input type="text" class="form-control" id="filter_date_to" name="filter_date_to">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-3 col-md-3">
+            <label for="visitor_filter">Visitor Name:</label>
+          </div>
+          <div class="col-xs-12 col-sm-9 col-md-9">
+            <input type="text" class="form-control" id="visitor_filter" name="visitor_filter">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-3">
+            <label for="company_filter">Company:</label>
+          </div>
+          <div class="col-xs-12 col-sm-9">
+            <input type="text" class="form-control" id="company_filter" name="company_filter">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-3">
+            <label for="person_visiting_filter">Person Visiting:</label>
+          </div>
+          <div class="col-xs-12 col-sm-9">
+            <input type="text" class="form-control" id="person_visiting_filter" name="person_visiting_filter">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4 col-sm-3">
+            <p class="formlabel">Classified:</p>
+          </div>
+          <div class="col-xs-4 col-sm-5">
+            <div class="form-check">
+              <label class="form-check-label" for="classified_filter_yes" id="classified_filter_yes_label">
+              <input type="radio" class="form-check-input" name="classified_filter" id="classified_filter_yes" value="yes">
+              Yes</label>
+            </div>
+          </div>
+          <div class="col-xs-4 col-sm-4">
+            <div class="form-check">
+              <label class="form-check-label" for="classified_filter_no" id="classified_no_label">
+              <input type="radio" class="form-check-input" name="classified_filter" id="classified_filter_no" value="no">
+              No</label>
+            </div>
+          </div>
+        </div>
+        <div class="buttonrow">
+          <button type="reset" id="filter_reset_btn" class="btn btn-warning">Reset</button>
+          <button type="submit" id="filter_submit_btn" class="btn btn-success">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div><!-- filter_form_div  -->
+
+
+<!-- ***********************************************************************************************   -->
+
+
+  <div id="export_form_div">
+    <button id="close_export_div_btn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+    <form id="export_form">
+      <div class="form-group">
+        <h2>Export Activity Data</h2>
+        <div class="row">
+          <div class="col-xs-12 col-sm-2">
+            <label for="export_date_from">Date From:</label>
+          </div>
+          <div class="col-xs-12 col-sm-10">
+            <input type="text" class="form-control" id="export_date_from" name="export_date_from">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-2">
+            <label for="export_date_to">Date To:</label>
+          </div>
+          <div class="col-xs-12 col-sm-10">
+            <input type="text" class="form-control" id="export_date_to" name="export_date_to">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-2">
+            <label for="export_size">Size:</label>
+          </div>
+          <div class="col-xs-12 col-sm-10">
+            <select class="form-control" id="export_size" name="export_size">
+            <option value="0" selected>Select All</option>
+            <option value="1">Size 1</option>
+            <option value="2">Size 2</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-3">
+            <label for="export_company_filter">Company Filter:</label>
+          </div>
+          <div class="col-xs-12 col-sm-9">
+            <input type="text" class="form-control" id="export_company_filter" name="export_company_filter">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-check">
+              <label class="form-check-label" for="rejected_passes" id="rejected_passes_label">
+              <input type="checkbox" class="form-check-input" name="rejected_passes" id="rejected_passes" value="true">
+              Export Rejected Passes only</label>
+            </div>
+          </div>
+        </div>
+     
+        <div class="buttonrow">
+          <button type="reset" id="export_reset_btn" class="btn btn-warning">Reset</button>
+          <button type="submit" id="export_submit_btn" class="btn btn-success">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div><!-- export_form_div  -->
+
+
+<!--- *******************************************************************************************  -->
+
+
+  <h2>Visitors Log</h2>
+  <p>*If applicable, visitor was created/updated</p>
+
+  <div id="log_key" class="row">
+    <div class="col-xs-12 col-sm-4">
+      <button id="new_user_key"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></button> First Time Visitor<br>
+      <button id="return_user_key"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></button> Return Visitor<br>
+      <button id="update_user_key"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></button> Return Visitor Needs Info Updated<br>
+      <button id="first_visitin_key"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></button> Should Create Visitor<br>
+      <button id="return_visitin_key"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></button> Should Record Sign In*<br>
+      <button id="update_visitin_key"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></button> Should Update Return Visitor<br>
+      <button id="visitin_recorded_key"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></button> Sign In Recorded*<br>
+    </div>
+    <div class="col-xs-12 col-sm-8">
+      <button id="return2_visitout_key"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button> Must Record Sign Out*<br>
+      <button id="first_visitout_key"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button> Must Create New Visitor; Then Must Record Sign In and Sign Out<br>
+      <button id="return_visitout_key"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button> Must Record Sign In and Sign Out*<br>
+      <button id="update_visitout_key"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button> Must Update Return Visitor; Then Must Record Sign In and Sign Out<br>
+      <button id="saved_visit_key"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button> All Visitor Transactions Saved<br>
+      <button id="saved_missed_key"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button> All Missed Sign Out Visitor Transactions Saved<br>
+      <button id="missed2_signout_key"><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span></button> Missed Sign Out: Must Create/Update Visitor; Then Must Record Sign In/Out<br>
+      <button id="missed_signout_key"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span></button> Missed Sign Out: Must Record Sign In/Out<br>
+    </div>
+  </div><!-- log_key  -->
+
+  <div id="filter_btns_div">
+    <div class="row">
+      <div class="col-xs-12">
+        <button id="view_all_btn" class="btn btn-default btn-grey filter_btn">(<span id="count_all">0</span>) View All</button>
+        <button id="first_visitor_filter" class="btn btn-default filter_btn">(<span id="count_first">0</span>) First Time Visitors</button>
+        <button id="return_visitor_filter" class="btn btn-default filter_btn">(<span id="count_return">0</span>) Return Visitors</button>
+        <button id="update_visitor_filter" class="btn btn-default filter_btn">(<span id="count_update">0</span>) Update Visitors</button>
+        <button id="not_signedout_filter" class="btn btn-default filter_btn">(<span id="count_signedin">0</span>) Not Signed Out</button>
+        <button id="signedout_filter" class="btn btn-default filter_btn">(<span id="count_signedout">0</span>) Signed Out / Unsaved</button>
+        <button id="all_saved_filter" class="btn btn-default btn-default filter_btn">(<span id="count_saved">0</span>) All Saved</button>
+        <button id="missed_signout_filter" class="btn btn-default filter_btn">(<span id="count_missed">0</span>) Missed Sign Out</button>
+      <!--  <button id="new_company_filter" class="btn btn-default filter_btn">(<span id="count_newco">0</span>) New Companies</button> -->
+      </div>
+    </div>
+  </div><!-- filter_btns_div  -->
+
+  <div id="visitors_log_table_div">
+    <p id="transaction_instruction"><strong>INSTRUCTIONS:</strong> Click on a transaction status icon to record the next appropriate transaction, until status symbol is <span class="nobr">All Visitor</span> Transactions <span class="nobr">Saved (<button id="saved_visit_key"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>)</span> or <span class="nobr">All Missed</span> Sign Out Visitor Transactions <span class="nobr">Saved (<button id="saved_missed_key"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>)</span></p>
+    <table id="visitors_log_table" class="table two-axis">
+      <thead>
+        <tr>
+          <th scope="col">Photo</th>
+          <th scope="col" class="hideme" hidden>Visitor ID</th>
+          <th scope="col">Person Name</th>
+          <th scope="col">Company</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Email</th>
+          <th scope="col" class="hideme" hidden>Visit Reason value</th>
+          <th scope="col">Visit Reason</th>
+          <th scope="col">Person Visiting</th>
+          <th scope="col">U.S. Citizen</th>
+          <th scope="col">Classified</th>
+          <th scope="col">Time In</th>
+          <th scope="col">Time Out</th>
+          <th scope="col">Sign In Status</th>
+          <th scope="col">Visit Status</th>
+          <th scope="col" class="hideme" hidden>Trans ID</th>
+        </tr>
+      </thead>
+      <tbody id="trans_content">
+      </tbody>
+    </table>
+  </div><!-- visitors_log_table_div -->
+
+
+</div><!-- main  -->
+
+
+
+<script>
+  var thisrow, thisdata, f, thesefilterbtns = document.querySelectorAll(".filter_btn");
+  function validateExport() {
+    validform = true;
+    return validform;
+  }
+  function thisIndex(x) {
+    thisrow = x.rowIndex;
+  }
+
+  function resetFilterBtns() {
+    for (f = 0; f < thesefilterbtns.length; f += 1) {
+      $(thesefilterbtns[f]).removeClass("btn-grey");
+    }
+  }
+
+
+
+  $(document).ready(function () {
+    var v, newinput, thisreason, d, e, thistimein, thistimeout, t, transfound, transstatus;
+    const monthNames = ["Jan.", "Feb.", "Mar.", "Apr.", "May", "June", "July", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."];
+    for (v = visitors_signs.length - 1; v >= 0; v -= 1) {
+      newinput = "";
+      thisreason = $("#record_reason option[value='" + visitors_signs[v].reason + "']").text();
+      d = new Date(Number(visitors_signs[v].datetime_in));
+      thistimein = monthNames[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear() + ' at ' + ("0" + d.getHours()).slice(-2) + ':' + ("0" + d.getMinutes()).slice(-2);
+      if (visitors_signs[v].datetime_out !== "") {
+        e = new Date(Number(visitors_signs[v].datetime_out));
+        thistimeout = monthNames[e.getMonth()] + ' ' + e.getDate() + ', ' + e.getFullYear() + ' at ' + ("0" + e.getHours()).slice(-2) + ':' + ("0" + e.getMinutes()).slice(-2);
+      } else {
+        thistimeout = "";
+      }
+
+      t = visitors_transactions.length;
+      transfound = false;
+      while ((t > 0) && (transfound === false)) {
+        t -= 1;
+        if (visitors_transactions[t].visitor_sign_id === visitors_signs[v].visitor_sign_id) {
+          transstatus = visitors_transactions[t].status;
+          transfound = true;
+        }
+      }
+      if (transfound === true) {
+        newinput = '<tr id="' + visitors_signs[v].visitor_sign_id + '"><td scope="row"><img class="thumbpict" src="' + visitors_signs[v].person_image_url + '"></td><td class="personid hideme" hidden>' + visitors_signs[v].person_id + '</td>';
+        if (visitors_transactions[t].person_id !== "") {
+          newinput = newinput + '<td><a href="visitor_transactions.html?personid=' + visitors_transactions[t].person_id + '&visitorsignid=' + visitors_signs[v].visitor_sign_id + '">' + visitors_signs[v].person_name + '</a></td>';
+        } else {
+          newinput = newinput + '<td>' + visitors_signs[v].person_name + '</td>';
+        }
+        newinput = newinput + '<td>' + visitors_signs[v].company + '</td><td>' + visitors_signs[v].phone + '</td><td>' + visitors_signs[v].email + '</td><td class="hideme" hidden>' + visitors_signs[v].reason + '</td><td>' + thisreason + '</td><td>' + visitors_signs[v].person_visiting + '</td><td>' + visitors_signs[v].citizen + '</td><td>' + visitors_signs[v].classified + '</td><td>' + thistimein + '</td><td>' + thistimeout + '</td>'
+        if (visitors_signs[v].first_visit === "yes") {
+          newinput = newinput + '<td><button class="new_user_btn">';
+        } else if (visitors_signs[v].update_contact === true) {
+          newinput = newinput + '<td><button class="update_user_btn">';
+        } else {
+          newinput = newinput + '<td><button class="return_user_btn">';
+        }
+        newinput = newinput + '<span class="glyphicon glyphicon-user" aria-hidden="true"></span></button></td>';
+
+        if (transstatus === "00000") {
+          newinput = newinput + '<td><button class="first_visitin_btn"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></button></td>';
+        } else if (transstatus === "00002") {
+          newinput = newinput + '<td><button class="missed2_signout_btn missed_fv_btn"><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span></button></td>';
+        } else if ((transstatus === "10000") || (transstatus === "01000") || (transstatus === "21000")) {
+          newinput = newinput + '<td><button class="return_visitin_btn"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></button></td>';
+        } else if ((transstatus === "10002") || (transstatus === "01002") || (transstatus === "21002")) {
+          newinput = newinput + '<td><button class="missed_signout_btn missed_cr_btn"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span></button></td>';
+        } else if (transstatus === "20000") {
+          newinput = newinput + '<td><button class="update_visitin_btn"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></button></td>';
+        } else if (transstatus === "20002") {
+          newinput = newinput + '<td><button class="missed2_signout_btn missed_uv_btn"><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span></button></td>';
+        } else if ((transstatus === "01100") || (transstatus === "10100") || (transstatus === "21100")) {
+          newinput = newinput + '<td><button class="visitin_recorded_btn"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></button></td>';
+        } else if ((transstatus === "01102") || (transstatus === "10102") || (transstatus === "21102")) {
+          newinput = newinput + '<td><button class="missed_signout_btn missed_ur_btn"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span></button></td>';
+        } else if ((transstatus === "01111") || (transstatus === "10111") || (transstatus === "21111")) {
+          newinput = newinput + '<td><button class="saved_visit_btn"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td>';
+        } else if (transstatus === "00010") {
+          newinput = newinput + '<td><button class="first_visitout_btn"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button></td>';
+        } else if (transstatus === "20010") {
+          newinput = newinput + '<td><button class="update_visitout_btn"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button></td>';
+        } else if ((transstatus === "01010") || (transstatus === "10010") || (transstatus === "21010")) {
+          newinput = newinput + '<td><button class="return_visitout_btn"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button></td>';
+        } else if ((transstatus === "01110") || (transstatus === "10110") || (transstatus === "21110")) {
+          newinput = newinput + '<td><button class="return2_visitout_btn"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button></td>';
+        } else if ((transstatus === "02222") || (transstatus === "12222") || (transstatus === "22222")) {
+          newinput = newinput + '<td><button class="saved_missed_btn"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td>';
+        } else {
+          newinput = newinput + '<td>Error!</td>';
+        }
+      }
+      newinput = newinput + '<td class="hideme" hidden>' + transstatus + '</td></tr>';
+      if (newinput !== "") {
+        $("#trans_content").append(newinput);
+        setTimeout(function () {
+          $('#visitors_log_table').basictable({
+            containerBreakpoint: 738,
+            showEmptyCells: true
+          });       
+        }, 1200);
+      }
+    }
+  
+    var r, thisbtnclass, thistd, newco = 0, not_signedout = 0, signedout = 0, allsaved = 0, firstvisitor = 0, returnvisitor = 0, updatevisitor = 0, missed_signout = 0, newcompany = 0, theserows = $("#visitors_log_table tr");
+    for (r = 1; r < theserows.length; r += 1) {
+      theserows[r].addEventListener("click", function () {
+        thisIndex(this);
+      });
+      thisbtnclass = $(theserows[r]).find("button");
+      if ($(thisbtnclass).hasClass("return_visitin_btn") || $(thisbtnclass).hasClass("first_visitin_btn") || $(thisbtnclass).hasClass("update_visitin_btn")
+        || $(thisbtnclass).hasClass("visitin_recorded_btn") || $(thisbtnclass).hasClass("missed_signout_btn") || $(thisbtnclass).hasClass("missed2_signout_btn")) {
+        not_signedout += 1;
+      }
+      if ($(thisbtnclass).hasClass("return_visitout_btn") || $(thisbtnclass).hasClass("return2_visitout_btn") || $(thisbtnclass).hasClass("first_visitout_btn") || $(thisbtnclass).hasClass("update_visitout_btn")) {
+        signedout += 1;
+      }
+      if ($(thisbtnclass).hasClass("saved_visit_btn") || $(thisbtnclass).hasClass("saved_missed_btn")) {
+        allsaved += 1;
+      }
+      if ($(thisbtnclass).hasClass("new_user_btn")) {
+        firstvisitor += 1;
+      }
+      if ($(thisbtnclass).hasClass("return_user_btn")) {
+        returnvisitor += 1;
+      }
+      if ($(thisbtnclass).hasClass("update_user_btn")) {
+        updatevisitor += 1;
+      }
+      if ($(thisbtnclass).hasClass("missed_signout_btn") || $(thisbtnclass).hasClass("missed2_signout_btn")) {
+        missed_signout += 1;
+      }
+      thistd = $(theserows[r]).find("td:eq(3)");
+      if ($(thistd).hasClass("newcompany")) {
+       newco += 1;
+      }
+  /* NOTE: Fix new company code
+      var thisco = thistd.innerHTML;
+      alert(thisco);
+      if (!thisco.in(companies)) {
+        $(thistd).addClass("newcompany");
+        newco += 1;
+      }
+  */
+    }  
+
+
+    document.getElementById("count_all").innerHTML = theserows.length - 1;
+    document.getElementById("count_signedin").innerHTML = not_signedout;
+    document.getElementById("count_signedout").innerHTML = signedout;
+    document.getElementById("count_saved").innerHTML = allsaved;
+    document.getElementById("count_missed").innerHTML = missed_signout;
+    document.getElementById("count_first").innerHTML = firstvisitor;
+    document.getElementById("count_return").innerHTML = returnvisitor;
+    document.getElementById("count_update").innerHTML = updatevisitor;
+  //  document.getElementById("count_newco").innerHTML = newco;
+
+
+    $("#view_all_btn").click(function () {
+      resetFilterBtns();
+      setTimeout(function () {
+        $("#view_all_btn").addClass("btn-grey");
+        var r, thisrow, theserows = document.getElementById("visitors_log_table").getElementsByTagName("tr");
+        for (r = 0; r < theserows.length; r += 1) {
+          theserows[r].style.display = "";
+        }
+      }, 600);
+    });
+
+
+    $("#signedout_filter").click(function () {
+    // NOTE: Only displays visitors that signed out, but record not saved.");
+      resetFilterBtns();
+      setTimeout(function () {
+        $("#signedout_filter").addClass("btn-grey");
+        var r, s, thisrow, theseshow = document.querySelectorAll(".first_visitout_btn, .return_visitout_btn, .return2_visitout_btn, .update_visitout_btn"), thesehide = document.querySelectorAll(".saved_visit_btn, .saved_missed_btn, .first_visitin_btn, .return_visitin_btn, .update_visitin_btn, .visitin_recorded_btn, .missed_signout_btn, .missed2_signout_btn");
+        for (s = 0; s < theseshow.length; s += 1) {
+          thisrow = theseshow[s].closest('tr');
+          thisrow.style.display = "";
+        }
+        for (r = 0; r < thesehide.length; r += 1) {
+          thisrow = thesehide[r].closest('tr');
+          thisrow.style.display = "none";
+        }
+      }, 600);
+    });
+
+    $("#not_signedout_filter").click(function () {
+      resetFilterBtns();
+      setTimeout(function () {
+        $("#not_signedout_filter").addClass("btn-grey");
+        var r, s, thisrow, theseshow = document.querySelectorAll(".first_visitin_btn, .return_visitin_btn, .update_visitin_btn, .visitin_recorded_btn, .missed_signout_btn, .missed2_signout_btn"), thesehide = document.querySelectorAll(".saved_visit_btn, .saved_missed_btn, .first_visitout_btn, .return_visitout_btn, .return2_visitout_btn, .update_visitout_btn");
+        for (s = 0; s < theseshow.length; s += 1) {
+          thisrow = theseshow[s].closest('tr');
+          thisrow.style.display = "";
+        }
+        for (r = 0; r < thesehide.length; r += 1) {
+          thisrow = thesehide[r].closest('tr');
+          thisrow.style.display = "none";
+        }
+      }, 600);
+    });
+
+    $("#all_saved_filter").click(function () {
+      resetFilterBtns();
+      setTimeout(function () {
+        $("#all_saved_filter").addClass("btn-grey");
+        var r, s, thisrow, theseshow = document.querySelectorAll(".saved_visit_btn, .saved_missed_btn"), thesehide = document.querySelectorAll(".first_visitin_btn, .return_visitin_btn, .update_visitin_btn, .visitin_recorded_btn, .missed_signout_btn, .missed2_signout_btn, .first_visitout_btn, .return_visitout_btn, .return2_visitout_btn, .update_visitout_btn");
+        for (s = 0; s < theseshow.length; s += 1) {
+          thisrow = theseshow[s].closest('tr');
+          thisrow.style.display = "";
+        }
+        for (r = 0; r < thesehide.length; r += 1) {
+          thisrow = thesehide[r].closest('tr');
+          thisrow.style.display = "none";
+        }
+      }, 600);
+    });
+
+    $("#missed_signout_filter").click(function () {
+      resetFilterBtns();
+      setTimeout(function () {
+        $("#missed_signout_filter").addClass("btn-grey");
+        var r, s, thisrow, theseshow = document.querySelectorAll(".missed_signout_btn, .missed2_signout_btn"), thesehide = document.querySelectorAll(".saved_visit_btn, .saved_missed_btn, .first_visitin_btn, .first_visitout_btn, .return_visitin_btn, .return_visitout_btn, .return2_visitout_btn, .visitin_recorded_btn, .update_visitin_btn, .update_visitout_btn");
+        for (s = 0; s < theseshow.length; s += 1) {
+          thisrow = theseshow[s].closest('tr');
+          thisrow.style.display = "";
+        }
+        for (r = 0; r < thesehide.length; r += 1) {
+          thisrow = thesehide[r].closest('tr');
+          thisrow.style.display = "none";
+        }
+      }, 600);
+    });
+
+    $("#first_visitor_filter").click(function () {
+      resetFilterBtns();
+      setTimeout(function () {
+        $("#first_visitor_filter").addClass("btn-grey");
+        var r, s, thisrow, theseshow = document.querySelectorAll(".new_user_btn"), thesehide = document.querySelectorAll(".return_user_btn, .update_user_btn");
+        for (s = 0; s < theseshow.length; s += 1) {
+          thisrow = theseshow[s].closest('tr');
+          thisrow.style.display = "";
+        }
+        for (r = 0; r < thesehide.length; r += 1) {
+          thisrow = thesehide[r].closest('tr');
+          thisrow.style.display = "none";
+        }
+      }, 600);
+    });
+
+    $("#return_visitor_filter").click(function () {
+      resetFilterBtns();
+      setTimeout(function () {
+        $("#return_visitor_filter").addClass("btn-grey");
+        var r, s, thisrow, theseshow = document.querySelectorAll(".return_user_btn"), thesehide = document.querySelectorAll(".new_user_btn, .update_user_btn");
+        for (s = 0; s < theseshow.length; s += 1) {
+          thisrow = theseshow[s].closest('tr');
+          thisrow.style.display = "";
+        }
+        for (r = 0; r < thesehide.length; r += 1) {
+          thisrow = thesehide[r].closest('tr');
+          thisrow.style.display = "none";
+        }
+      }, 600);
+    });
+
+    $("#update_visitor_filter").click(function () {
+      resetFilterBtns();
+      setTimeout(function () {
+        $("#update_visitor_filter").addClass("btn-grey");
+        var r, s, thisrow, theseshow = document.querySelectorAll(".update_user_btn"), thesehide = document.querySelectorAll(".return_user_btn, .new_user_btn");
+        for (s = 0; s < theseshow.length; s += 1) {
+          thisrow = theseshow[s].closest('tr');
+          thisrow.style.display = "";
+        }
+        for (r = 0; r < thesehide.length; r += 1) {
+          thisrow = thesehide[r].closest('tr');
+          thisrow.style.display = "none";
+        }
+      }, 600);
+    });
+
+/*
+    $("#new_company_filter").click(function () {
+      resetFilterBtns();
+      setTimeout(function () {
+        $("#new_company_filter").addClass("btn-grey");
+        var r, thisco, theserows = document.getElementById("visitors_log_table").getElementsByTagName("tr");
+        for (r = 1; r < theserows.length; r += 1) {
+          if ($(theserows[r]).find("td").hasClass("newcompany")) {
+            theserows[r].style.display = "";
+          } else {
+            theserows[r].style.display = "none";          
+          }
+        }
+      }, 600);
+    });
+    var nc, newcompanies = document.querySelectorAll(".newcompany");
+    for (nc = 0; nc < newcompanies.length; nc += 1) {
+      newcompanies[nc].addEventListener("click", function () {
+        var addco = confirm("Add this company to the Companies List?");
+        if (addco) {
+          companies.push(this.innerText);
+          $(this).removeClass("newcompany");
+        //  alert(companies[companies.length - 1]);
+        }
+      });
+    }
+*/
+
+    $("#filter_visitors_btn").click(function () {
+      $("#visitor_form_div, #record_visit_form_div, #export_form_div").hide();
+      $("#filter_form_div").show();
+    });
+    $("#close_filter_div_btn").click(function () {
+      document.getElementById("filter_signlog_form").reset();
+      $("#filter_form_div").hide();
+    });
+
+    $("#export_report_btn").click(function () {
+      $("#visitor_form_div, #record_visit_form_div, #filter_form_div").hide();
+      $("#export_form_div").show();
+    });
+    $("#close_export_div_btn").click(function () {
+      document.getElementById("export_form").reset();
+      $("#export_form_div").hide();
+    });
+
+
+//NOTE: Save in case preregistration is allowed
+/*
+    $("#create_visitor_btn").click(function () {
+      document.getElementById("visitor_form").reset();
+      document.getElementById("visitor_person_name").readOnly = false;
+      document.getElementById("company").readOnly = false;
+      document.getElementById("phone").readOnly = false;
+      document.getElementById("email").readOnly = false;
+      document.getElementById("person_image_src").readOnly = false;
+      document.getElementById("visitor_submit_btn").innerHTML = "Create";
+      $("#visitor_form_div").show();
+    });
+*/
+
+    $("#close_visitor_form_btn, #visitor_cancel_btn").click(function (e) {
+      e.preventDefault();
+      document.getElementById("visitor_form").reset();
+      document.getElementById("visitor_person_name").readOnly = true;
+      document.getElementById("company").readOnly = true;
+      document.getElementById("phone").readOnly = true;
+      document.getElementById("email").readOnly = true;
+      document.getElementById("person_image_src").readOnly = true;
+      document.getElementById("visitor_submit_btn").innerHTML = "Create";
+      $("#visitor_form_div").hide();
+    });
+
+
+    $("#close_record_visit_form_btn, #record_visit_cancel_btn").click(function (e) {
+      e.preventDefault();
+      document.getElementById("citizen_no").disabled = false;
+      document.getElementById("citizen_yes").disabled = false;
+      document.getElementById("classified_no").disabled = false;
+      document.getElementById("classified_yes").disabled = false;
+      document.getElementById("record_visit_form").reset();
+      $("#record_visit_form_div").hide();
+    });
+
+
+    $(".saved_visit_btn, .saved_missed_btn").click(function () {
+      alert("VISIT COMPLETE: All transactions were saved!");
+    });
+
+
+    $(".visitin_recorded_btn").click(function () {
+      alert("Visitor Sign In already recorded!");
+    });
+
+
+    $(".first_visitin_btn, .first_visitout_btn, .update_visitin_btn, .update_visitout_btn, .missed_fv_btn, .missed_uv_btn").click(function () {
+      var thisimage = $(this).closest('tr').find("img").attr("src");
+      setTimeout(function () {
+        $("#visitor_form #visitor_person_id").val(document.getElementById("visitors_log_table").rows[thisrow].cells[1].innerText);
+        $("#visitor_form #visitor_person_name").val(document.getElementById("visitors_log_table").rows[thisrow].cells[2].innerText);
+        $("#visitor_form #company").val(document.getElementById("visitors_log_table").rows[thisrow].cells[3].innerText);
+        $("#visitor_form #phone").val(document.getElementById("visitors_log_table").rows[thisrow].cells[4].innerText);
+        $("#visitor_form #email").val(document.getElementById("visitors_log_table").rows[thisrow].cells[5].innerText);
+        $("#visitor_form #person_image_src").val(thisimage);
+        if ($("#visitor_form #visitor_person_id").val() !== "") {
+          document.getElementById("visitor_submit_btn").innerHTML = "Update";
+        } else {
+          document.getElementById("visitor_submit_btn").innerHTML = "Create";
+        }
+        $("#record_visit_form_div, #filter_form_div, #export_form_div").hide();
+        $("#visitor_form_div").show();
+        window.scrollTo(0,0);
+      }, 1800);
+    });
+
+
+    $(".return_visitin_btn, .return_visitout_btn, .return2_visitout_btn, .missed_cr_btn, .missed_ur_btn").click(function () {        
+      if ($(this).hasClass("missed_signout_btn")) {
+        document.getElementById("record_datetime_out").readOnly = false;
+      } else {
+        document.getElementById("record_datetime_out").readOnly = true;        
+      }
+      var x = this.parentNode;
+      var thisimage = $(this).closest('tr').find("img").attr("src");
+      x = x.parentNode;
+      x = x.parentNode;
+      setTimeout(function () {
+        $("#record_visit_form #record_visit_id").val(x.id);
+        $("#record_visit_form #record_person_id").val(document.getElementById("visitors_log_table").rows[thisrow].cells[1].innerText);
+        $("#record_visit_form #record_person_name").val(document.getElementById("visitors_log_table").rows[thisrow].cells[2].innerText);
+        $("#reason_visiting").val(document.getElementById("visitors_log_table").rows[thisrow].cells[7].innerText);
+        document.getElementById("record_reason").value = document.getElementById("visitors_log_table").rows[thisrow].cells[6].innerText;       
+        $("#record_visit_form #person_visiting").val(document.getElementById("visitors_log_table").rows[thisrow].cells[8].innerText);
+        if (document.getElementById("visitors_log_table").rows[thisrow].cells[9].innerText === "yes") {
+          $("#record_visit_form #citizen_yes").prop("checked", "true");
+          $("#record_visit_form #citizen_no").prop("disabled", "true");
+       } else {
+          $("#record_visit_form #citizen_no").prop("checked", "true");
+          $("#record_visit_form #citizen_yes").prop("disabled", "true");
+        }
+        if (document.getElementById("visitors_log_table").rows[thisrow].cells[10].innerText === "yes") {
+          $("#record_visit_form #classified_yes").prop("checked", "true");
+          $("#record_visit_form #classified_no").prop("disabled", "true");
+        } else {
+          $("#record_visit_form #classified_no").prop("checked", "true");
+          $("#record_visit_form #classified_yes").prop("disabled", "true");
+        }
+        $("#record_visit_form #record_datetime_in").val(document.getElementById("visitors_log_table").rows[thisrow].cells[11].innerText);
+        $("#record_visit_form #record_datetime_out").val(document.getElementById("visitors_log_table").rows[thisrow].cells[12].innerText);
+        $("#record_visit_form #visit_image_src").val(thisimage);
+        var thistransid = document.getElementById("visitors_log_table").rows[thisrow].cells[15].innerText;
+        if ((thistransid === "01110") || (thistransid === "10110") || (thistransid === "21110") || (thistransid === "01102") || (thistransid === "10102") || (thistransid === "21102")) {
+          document.getElementById("record_visit_submit_btn").innerHTML = "Update";
+        } else {
+          document.getElementById("record_visit_submit_btn").innerHTML = "Create";
+        }
+        $("#visitor_form_div, #filter_form_div, #export_form_div").hide();
+        $("#record_visit_form_div").show();
+        window.scrollTo(0,0);
+      }, 1800);
+   });
+
+
+    $("#record_visit_submit_btn").click(function (e) {
+      e.preventDefault();
+      var thistime;
+      thistime = Date.parse($("#record_visit_form #record_datetime_in").val());
+      $("#record_visit_form #record_datetime_in").val(thistime);
+      thistime = Date.parse($("#record_visit_form #record_datetime_out").val());
+      $("#record_visit_form #record_datetime_out").val(thistime);
+      $("#record_visit_form").submit();
+    });
+
+  });
+</script>
+
+</body>
+</html>

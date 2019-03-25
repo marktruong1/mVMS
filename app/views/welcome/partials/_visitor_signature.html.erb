@@ -1,0 +1,39 @@
+<div id="visitor_signature">
+  <h1><a href='/'> <img class="smlogo" src="/images/microhealth-logo.svg" /></a></h1>
+  <h2>Visit Agreement</h2>
+  <div class="complete_msg" id="signature_complete_msg">Your signature is required!</div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <textarea class="form-control" id="signature_agreement" rows="10" readonly><%= Setting.first.try(:value) %></textarea>
+    </div>
+  </div>
+
+  <div class="row" id="person_signature_div">
+    <div class="col-xs-12">
+      <label for="person_signature">Input your signature in the box below:</label>
+    </div>
+    <div class="col-xs-12">
+      <%  def text_sign_form_field_tag(name)
+            return text_field_tag(name,"", :hidden => true)+content_tag(:div,"",:id => "#{name}_sig")
+          end
+      %>
+      <%= text_sign_form_field_tag(:person_signature) %>
+    </div>
+    <div id="person_signature_src_div" hidden>
+      <input id="person_signature_url">
+    </div>
+  </div>
+
+  <div class="buttonrow">
+    <button id="signature_back_btn" class="btn btn-primary">Back</button>
+    <button id="signature_cancel_btn" class="btn btn-warning">Cancel</button>
+    <button id="signature_next_btn" class="btn btn-success">Next</button>
+  </div>
+</div><!-- visitor_signature  -->
+<style>
+  canvas.jSignature{
+    min-height: 30vh !important;
+    min-width: 100% !important;
+  }
+</style>

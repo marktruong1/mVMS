@@ -1,0 +1,72 @@
+
+<div id="filter_form_div">
+  <button id="close_filter_div_btn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+  <form id="filter_signlog_form">
+    <div class="form-group">
+      <h2>Filter Visitors</h2>
+      <div class="row">
+        <div class="col-xs-12 col-sm-2">
+          <label for="filter_date_from">Date From:</label>
+        </div>
+        <div class="col-xs-12 col-sm-10">
+          <input type="text" class="form-control" id="filter_date_from" name="filter_date_from">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-2">
+          <label for="filter_date_to">Date To:</label>
+        </div>
+        <div class="col-xs-12 col-sm-10">
+          <input type="text" class="form-control" id="filter_date_to" name="filter_date_to">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-3 col-md-3">
+          <label for="visitor_filter">Visitor Name:</label>
+        </div>
+        <div class="col-xs-12 col-sm-9 col-md-9">
+          <input type="text" class="form-control" id="visitor_filter" name="visitor_filter">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-3">
+          <label for="company_filter">Company:</label>
+        </div>
+        <div class="col-xs-12 col-sm-9">
+          <input type="text" class="form-control" id="company_filter" name="company_filter">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-3">
+          <label for="person_visiting_filter">Person Visiting:</label>
+        </div>
+        <div class="col-xs-12 col-sm-9">
+          <input type="text" class="form-control" id="person_visiting_filter" name="person_visiting_filter">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-4 col-sm-3">
+          <p class="formlabel">Classified:</p>
+        </div>
+        <div class="col-xs-4 col-sm-5">
+          <div class="form-check">
+            <label class="form-check-label" for="classified_filter_yes" id="classified_filter_yes_label">
+              <input type="radio" class="form-check-input" name="classified_filter" id="classified_filter_yes" value="yes">
+              Yes</label>
+          </div>
+        </div>
+        <div class="col-xs-4 col-sm-4">
+          <div class="form-check">
+            <label class="form-check-label" for="classified_filter_no" id="classified_no_label">
+              <input type="radio" class="form-check-input" name="classified_filter" id="classified_filter_no" value="no">
+              No</label>
+          </div>
+        </div>
+      </div>
+      <div class="buttonrow">
+        <button type="reset" id="filter_reset_btn" class="btn btn-warning">Reset</button>
+        <button type="submit" id="filter_submit_btn" class="btn btn-success">Submit</button>
+      </div>
+    </div>
+  </form>
+</div><!-- filter_form_div  -->

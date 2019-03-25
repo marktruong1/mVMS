@@ -1,0 +1,20 @@
+<%= form_for(user, url: attachments_user_path(user), html: { method: :put, class: 'form-horizontal', id: 'smart-form-register' }) do |f| %>
+
+    <div class="form-group">
+      <div class="col-md-12">
+        <%= f.label t(:attachments) , class: 'col-md-2 control-label' %>
+      </div>
+      <%= f.simple_fields_for :user_attachments do |attachment| %>
+          <%= render 'attachments/attachment_show', :f => attachment %>
+      <% end %>
+      <div id="attachment_fields" class="col-xs-2 margin-top-10 " style="padding-right: 2px;" >
+        <%= link_to_add_association 'add file', f, :user_attachments, class: 'btn btn-success pull-right', partial: 'attachments/attachment_fields' %>
+      </div>
+    </div>
+
+    <div class="form-group" >
+      <div class="col-md-11">
+        <%= f.submit "Save", class: 'btn btn-success pull-right' %>
+      </div>
+    </div>
+<% end %>

@@ -1,0 +1,143 @@
+body {font-family:Arial,Helvetica,sans-serif;font-size:1.25em;}
+h1 {margin-top:0;text-align:right;}
+.tinylogo {width:6em;height:1.75em;}
+.header {background-color:#dddddd;padding:10px;text-align:right;}
+.btn2 {margin-left:10px;width:7em;height:2.5em;font-size:1em;display:inline-block;}
+.btn {margin-left:10px;height:2.5em;font-size:1em;display:inline-block;}
+/* NOTE: Not being used unless preregistation is allowed
+#create_visitor_btn {width:8.5em;display:none;}
+*/
+#filter_submit_btn {margin-right:10px;float:right;}
+#filter_btns_div, #more_filter_btns_div {margin:20px auto; padding:0px;text-align:left;float:left;}
+#display_visitor_transactions {clear:both;}
+/*
+#not_signedout_filter, #update_visitor_filter, #new_company_filter {width:12em;}
+#missed_signout_filter, #first_visitor_filter {width:12.5em;}
+#signedout_filter {width:15em;}
+#create_update_filter {width:17em;}
+#missed_was_missed_filter {width:20em;}
+#view_all_btn {width:9.5em;}
+*/
+.filter_btn {margin:5px 10px 5px 0; padding:0 10px;}
+.btn-grey {color:#000;font-weight:bold;}
+.buttonrow {margin-top:10px;text-align:right;}
+#transaction_instructions {font-size:1em;}
+
+#main3 {width:100%;margin:20px auto;}
+#visitors_log_table_div {width:100%;margin:0 auto;padding:0px;border-collapse:collapse;}
+.visitor_transactions_div {width:100%;margin:20px 0;border:5px solid #cccccc; padding:10px 10px 5px 10px;}
+.visitor_transactions_div .row {padding:5px;}
+.visitor_transactions_div .datetimerecord {border-top:1px solid #dddddd;}
+.thumbpict {width:70px;height:85px;}
+#filter_form_div, #export_form_div, #visitor_form_div, #record_visit_form_div {z-index:1000;width:100%;max-width:600px;margin:20px auto 10px 0;padding:10px 20px 0px 20px;border:1px solid #666;display:none;}
+#visitor_form h2, #export_form h2, #record_visit_form h2, #filter_signlog_form h2, #filter_trans_form h2 {margin:0 auto 20px auto;font-size:1.5em;font-family:Verdana,Arial,Helvetica,sans-serif;text-align:left;color:#419641;}
+#close_visitor_form_btn, #close_record_visit_form_btn, #close_export_div_btn, #close_filter_div_btn {float:right;background:transparent;border:none;}
+#log_key {margin-bottom:10px;}
+#first_visitin_key, .first_visitin_btn, #first_visitout_key, .first_visitout_btn, #return_visitin_key, .return_visitin_btn, #return_visitout_key, .return_visitout_btn, #return2_visitout_key, .return2_visitout_btn, #saved_visit_key, .saved_visit_btn, #missed_signout_key, .missed_signout_btn, #missed2_signout_key, .missed2_signout_btn, #update_visitin_key, .update_visitin_btn, #update_visitout_key, .update_visitout_btn, #visitin_recorded_key, .visitin_recorded_btn, #new_user_key, .new_user_btn, #return_user_key, .return_user_btn, #saved_missed_key, .saved_missed_btn, #update_user_key, .update_user_btn {background:transparent;border:none;}
+.first_visitin_btn, .first_visitout_btn, .return_visitin_btn, .return_visitout_btn, .return2_visitout_btn, .saved_visit_btn, .missed_signout_btn, .missed2_signout_btn, .update_visitin_btn, .update_visitout_btn, .visitin_recorded_btn, .new_user_btn, .return_user_btn, .saved_missed_btn, .update_user_btn {font-size:1.75em;}
+.saved_visit_btn, #saved_visit_key, #visitin_recorded_key, .visitin_recorded_btn {color:#419641;}
+#first_visitin_key, .first_visitin_btn, #first_visitout_key, .first_visitout_btn, .newcompany, #new_user_key, .new_user_btn, #saved_missed_key, .saved_missed_btn {color:#eb9316;}
+#return2_visitout_key, .return2_visitout_btn {color:#2aabd2;}
+#return_visitin_key, .return_visitin_btn, #return_visitout_key, .return_visitout_btn, #return_user_key, .return_user_btn {color:#265a88;}
+#missed_signout_key, .missed_signout_btn, #missed2_signout_key, .missed2_signout_btn, #update_visitin_key, .update_visitin_btn, #update_visitout_key, .update_visitout_btn, #update_user_key, .update_user_btn {color:#c12e2a;}
+#visitor_form label, #record_visit_form label, #export_form label, #filter_signlog_form label, #filter_trans_form label  {clear:both;margin-top:20px;margin-bottom:10px;}
+#record_visit_form p.formlabel, #filter_signlog_form p.formlabel, #filter_trans_form p.formlabel {margin-top:25px;margin-bottom:10px;font-weight:normal;font-weight:bold;}
+#filter_signlog_form p.formlabel,#filter_trans_form p.formlabel {margin-top:5px;}
+#record_reason {display:none;}
+#main3 h2 {font-size:1.75em;font-family:Verdana,Arial,Helvetica,sans-serif;text-align:left;color:#419641;}
+
+table {border:1px solid #666666;}
+table th {background-color:#ebf3f9;}
+
+.hidecheck {display:none;}
+.showcheck {display:inline-block;}
+ 
+
+.autocomplete {
+  position: relative;
+  display: inline-block;
+}
+.autocomplete-items {
+  position:absolute;
+  border:1px solid #666666;
+  border-bottom:none;
+  border-top:none;
+  z-index: 99;
+  top:100%;
+  left:0;
+  right:0;
+}
+.autocomplete-items div {
+  padding:10px;
+  cursor:pointer;
+  background-color:#ffffff;
+  border-bottom:1px solid #666666;
+    font-size:2em;
+}
+.autocomplete-items div:hover {
+  background-color:#dddddd;
+}
+.autocomplete-active {
+  background-color:yellow;
+  color:blue;
+}
+
+
+  #dialog-link {
+    padding: .4em 1em .4em 20px;
+    text-decoration: none;
+    position: relative;
+  }
+  #dialog-link span.ui-icon {
+    margin: 0 5px 0 0;
+    position: absolute;
+    left: .2em;
+    top: 50%;
+    margin-top: -8px;
+  }
+  #icons {
+    margin: 0;
+    padding: 0;
+  }
+  #icons li {
+    margin: 2px;
+    position: relative;
+    padding: 4px 0;
+    cursor: pointer;
+    float: left;
+    list-style: none;
+  }
+  #icons span.ui-icon {
+    float: left;
+    margin: 0 4px;
+  }
+  .fakewindowcontain .ui-widget-overlay {
+    position: absolute;
+  }
+
+.hideme {visibility:hidden;padding:0;width:0;height:0;}
+
+
+#visitors_log_table.two-axis tr td:first-of-type {
+  background: #eeeeee;
+}
+
+.nobr {white-space:nowrap;}
+
+@media only screen and (max-width: 1030px) {
+  #visitors_log_table.two-axis tr td:first-of-type,
+  #visitors_log_table.two-axis tr:nth-of-type(2n+2) td:first-of-type,
+  #visitors_log_table.two-axis tr td:first-of-type:before
+  {
+    background: #ebf3f9;
+  }
+  #visitors_log_table.two-axis tr td:first-of-type {
+    border-bottom: 1px solid #e4ebeb;
+  }
+}
+
+@media all and (min-width:880px) {
+  #visitor_form label, #record_visit_form label, #export_form label, #filter_signlog_form label, #filter_trans_form label {margin-top:5px;margin-bottom:20px;}
+  #record_visit_form p.formlabel {margin-top:15px;}
+}
+

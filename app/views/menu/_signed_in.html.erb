@@ -1,0 +1,12 @@
+<ul id="sortable">
+
+  <li class="<%= menu_active?('home') %>">
+    <a href="<%= "/" %>" title="Home"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Home</span></a>
+  </li>
+
+  <%= render partial: 'menu/other_links' %>
+
+  <% if User.current.admin? %>
+      <%= render partial: 'menu/admin' %>
+  <% end %>
+</ul>

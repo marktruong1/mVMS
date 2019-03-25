@@ -1,0 +1,77 @@
+<div id="visit_summary">
+  <h1><a href='/'> <img class="smlogo" src="/images/microhealth-logo.svg" /></a></h1>
+  <h2>Visit Summary</h2>
+  <div id="missed_signout_msg">You forgot to sign out of your last visit. Please sign out before signing in.</div>
+
+  <div class="row firstelement">
+    <div class="col-xs-4 col-sm-4 col-md-3" id="display_photo_div" style="overflow: hidden">
+
+    </div>
+    <div class="col-xs-8 col-sm-8 col-md-9" id="person_info">
+      <div>
+        <p>
+          <span style="font-weight: bold; margin-right: 15px">Name:</span><span><span id="display_name"></span></span>
+        </p>
+        <p>
+          <span style="font-weight: bold; margin-right: 15px">Company:</span><span><span id="display_company"></span></span>
+        </p>
+        <p>
+          <span style="font-weight: bold; margin-right: 15px">Phone:</span><span><span id="display_phone"></span></span>
+        </p>
+        <p>
+          <span style="font-weight: bold; margin-right: 15px">Email:</span><span><span id="display_email"></span></span>
+        </p>
+        <p>
+          <span style="font-weight: bold; margin-right: 15px">Visit Reason:</span><span><span id="display_reason"></span></span>
+        </p>
+        <p>
+          <span style="font-weight: bold; margin-right: 15px">Person Visiting:&nbsp;&nbsp;&nbsp;</span><span><span id="display_personvisit"></span></span>
+        </p>
+        <p>
+          <span style="font-weight: bold; margin-right: 15px">US Citizen:</span><span><span id="display_citizen"></span></span>
+        </p>
+        <p>
+          <span style="font-weight: bold; margin-right: 15px">Classified:</span><span><span id="display_classified"></span></span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" id="display_date_div">
+    <div class="col-xs-12 col-sm-6">
+      <p>Date: <span id="display_date_in"></span></p>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <p>Time In: <span id="display_time_in"></span></p>
+    </div>
+  </div>
+
+  <div class="row" id="time_in_div" hidden>
+    <div class="col-xs-12 col-sm-3">
+      <label for="datetime_in">Time In:</label>
+    </div>
+    <div class="col-xs-12 col-sm-9">
+      <input type="text" class="form-control" id="datetime_in" name="datetime_in" readonly>
+    </div>
+  </div>
+  <div class="row" id="time_out_div">
+    <div class="col-xs-12 col-sm-6">
+      <p id="missed_timeout">Please input time out.</p>
+    </div>
+    <div class="col-xs-4 col-sm-3">
+      <label for="datetime_out">Time Out:</label>
+    </div>
+    <div class="col-xs-8 col-sm-3">
+      <input type="text" class="form-control" id="datetime_out" name="datetime_out" readonly>
+    </div>
+  </div>
+
+  <div class="buttonrow">
+    <button id="summary_back_btn" class="btn btn-primary">Back</button>
+    <button id="summary_cancel_btn" class="btn btn-warning">Cancel</button>
+    <button id="signin_btn" class="btn btn-success">Sign In</button>
+    <button id="signout_btn" class="btn btn-success">Sign Out</button>
+
+  </div>
+
+</div><!-- visit_summary  -->

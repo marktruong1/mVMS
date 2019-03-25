@@ -1,0 +1,69 @@
+<header class='noprint' id="header">
+
+  <div id="logo-group">
+
+    <!-- PLACE YOUR LOGO HERE -->
+    <span id="logo1" style="margin: 10px;"> <%= link_to "#{image_tag( "logo.png", alt: '', size: '30x30' )} #{Setting['application_name']}".html_safe , root_path %> </span>
+    <!-- END LOGO PLACEHOLDER -->
+
+  </div>
+  <!-- end projects dropdown -->
+
+  <!-- pulled right: nav area -->
+  <div class="pull-right">
+
+    <!-- collapse menu button -->
+    <div id="hide-menu" class="noprint btn-header pull-right">
+      <span> <a href="javascript:void(0);" data-action="toggleMenu" title="Collapse Menu"><i class="fa fa-reorder"></i></a> </span>
+    </div>
+    <!-- end collapse menu -->
+
+    <!-- #MOBILE -->
+
+    <!-- logout button -->
+    <div id="logout" class="noprint btn-header transparent pull-right">
+      <span>
+        <% if user_signed_in? %>
+            <%= link_to destroy_session_path(:user), title: 'Sign out', :method => :delete do %>
+                <i class="fa fa-sign-out"></i>
+            <% end %>
+        <% else %>
+            <%= link_to new_session_path(:user), title: "Sign In" do %>
+                <i class="fa fa-sign-in"></i>
+            <% end %>
+        <% end %>
+      </span>
+    </div>
+    <!-- end logout button -->
+
+    <!-- search mobile button (this is hidden till mobile view port) -->
+    <div id="search-mobile" class="noprint btn-header transparent pull-right">
+      <span> <a href="javascript:void(0)" title="Search"><i class="fa fa-search"></i></a> </span>
+    </div>
+    <!-- end search mobile button -->
+
+
+    <!-- fullscreen button -->
+    <div id="fullscreen" class="noprint btn-header transparent pull-right">
+      <span> <a href="javascript:void(0);" data-action="launchFullscreen" title="Full Screen"><i class="fa fa-arrows-alt"></i></a> </span>
+    </div>
+
+    <div id="logout" class="noprint btn-header transparent pull-right">
+      <span>
+        <% if user_signed_in? and session[:employee_id]%>
+            <%= link_to "/persons/#{User.current.id}", title: "Log off from #{User.current.login}", :method => :delete do %>
+                    <i class="fa fa-times-circle"></i>
+            <% end %>
+        <% end %>
+      </span>
+    </div>
+    <!-- end fullscreen button -->
+
+    <!-- end voice command -->
+
+    <!-- end multiple lang -->
+
+  </div>
+  <!-- end pulled right: nav area -->
+
+</header>

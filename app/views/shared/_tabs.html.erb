@@ -1,0 +1,44 @@
+<script>
+    function hashLinks() {
+        $(".links a").prop("hash", location.hash.replace(/#tabs/,"#for"))
+    }
+    $( function() {
+        $("#<%= tab_name %>").tabs({
+            activate: function(event, ui) {
+                hash = ui.newTab.find("[href]").prop("hash");
+                history.pushState({}, '', hash);
+                hashLinks()
+            }
+        });
+    } );
+</script>
+
+<section id="widget-grid" class="show_tab">
+  <div class="row">
+    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="ui-tabs ui-widget ui-widget-content ui-corner-all" id="<%= tab_name %>">
+        <ul class="nav-tabs ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+          <% tabs.each do |tab| -%>
+              <li class="ui-state-default ui-corner-top">
+                <a class="ui-tabs-anchor" id="link-tabs-modules" href="<%=  "#tabs-#{tab[:name] }" %>"><%= t(tab[:label]) %></a>
+              </li>
+          <% end -%>
+        </ul>
+        <% tabs.each_with_index do |tab, idx| -%>
+            <div style="padding: 1em 0; display: <%= idx.zero? ? 'block' : 'none' %>" class="nav-tabs-div ui-tabs-panel ui-widget-content ui-corner-bottom" id="<%= "tabs-#{tab[:name]}" %>">
+              <%= render partial: tab[:partial], :locals => {:tab => tab} %>
+            </div>
+        <% end -%>
+      </div>
+    </article>
+  </div>
+</section>
+<style>
+  .ui-widget-content a {
+    color: #214e75;
+  }
+  a.btn{
+    color: white
+  }
+</style>
+

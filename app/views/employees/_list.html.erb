@@ -1,0 +1,57 @@
+<table class="display  projects-table table  table-striped  table-hover" cellspacing="0" width="100%" id="users_table">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th><%= t 'profile.first_name' %></th>
+    <th><%= t 'profile.middle_name' %></th>
+
+    <th><%= t 'profile.last_name' %></th>
+    <th><%= t 'profile.gender' %></th>
+    <th><%= t :email %></th>
+
+    <th><%= t 'profile.birthday' %></th>
+    <th><%= 'Organization' %>
+    <th><%= 'Active' %></th>
+
+  </tr>
+  </thead>
+
+  <tbody>
+
+  </tbody>
+  <tfoot>
+
+  </tfoot>
+</table>
+<script>
+  $(document).ready(function(){
+    var table = $('#users_table').DataTable({
+      "ajax": "<%= employees_path(format: :json, status_type: params[:status_type]) %>",
+      processing: true,
+      serverSide: true,
+      responsive: true,
+      display: [[0, 'asc']],
+      "bDestroy": true,
+      "columns": [
+        { "searchable": true, "orderable": true },
+        { "searchable": true, "orderable": true },
+        { "searchable": true, "orderable": true },
+
+        { "searchable": true, "orderable": true },
+        { "searchable": true, "orderable": true },
+        { "searchable": true, "orderable": true },
+
+        { "searchable": true, "orderable": true },
+        { "searchable": true, "orderable": true },
+        { "searchable": false, "orderable": false }
+      ],
+      "sDom": "<'dt-toolbar'" +
+      "<'col-sm-5 col-xs-8'f>" + //search box
+      "<'col-sm-2 col-sm-offset-4 col-xs-2 'C>"+// drop down size
+      "<'col-sm-1 col-xs-2 'l>>"+// drop down size
+      "t"+ // the table
+      "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
+      "iDisplayLength": 10
+    })
+  } );
+</script>

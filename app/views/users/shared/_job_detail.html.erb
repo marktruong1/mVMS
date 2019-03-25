@@ -1,0 +1,8 @@
+<%= render partial: 'job_details/form',
+           layout: 'shared/smart_widget_wrapper',
+           locals: {
+               wid_id: 'job_detail',
+               wid_title: 'Organization',
+               user: @user,
+               job_detail: @user.job
+           } %>
