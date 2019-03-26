@@ -4,22 +4,26 @@
 <div id="admin-login" class="container">
   <div class="row">
     <div id="box-left" class="col-sm-8">
-      <div id="section-1" class="col-xs-12 col-sm-6">
-        <%= image_tag section_1_image(@page_content) %>
-        <p><%= @page_content.section_1_body %></p>
-        <%= link_to 'drop off', 'javascript:void(0)', class: 'btn btn-danger', id: 'btn-drop-off' %>
-      </div>
-      <div id="section-2" class="col-xs-12 col-sm-6">
-        <%= image_tag section_2_image(@page_content) %>
+      <div class="row">
+        <div id="section-1" class="col-xs-12 col-sm-6">
+          <%= image_tag section_1_image(@page_content) %>
+          <p><%= @page_content.section_1_body %></p>
+          <%= link_to 'drop off', 'javascript:void(0)', class: 'btn btn-danger', id: 'btn-drop-off' %>
+        </div>
+        <div id="section-2" class="col-xs-12 col-sm-6">
+          <%= image_tag section_2_image(@page_content) %>
+        </div>
       </div>
 
-      <div id="section-3" class="col-xs-12 col-sm-6">
-        <p class="heading"><%= @page_content.section_3_title %></p>
-        <p class="body"><%= @page_content.section_3_body %></p>
-      </div>
-      <div id="section-4" class="col-xs-12 col-sm-6">
-        <p class="heading"><%= @page_content.section_4_title %></p>
-        <p class="body"><%= @page_content.section_3_body %></p>
+      <div class="row">
+        <div id="section-3" class="col-xs-12 col-sm-6">
+          <p class="heading"><%= @page_content.section_3_title %></p>
+          <p class="body"><%= @page_content.section_3_body %></p>
+        </div>
+        <div id="section-4" class="col-xs-12 col-sm-6">
+          <p class="heading"><%= @page_content.section_4_title %></p>
+          <p class="body"><%= @page_content.section_3_body %></p>
+        </div>
       </div>
     </div>
 
