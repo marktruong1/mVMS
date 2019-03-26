@@ -17,10 +17,16 @@
 <body class="blueback">
 
 <div id="main" class="container">
+
   <div id="visitintro_div">
+    <div class="pull-right">
+        <%= link_to admin_path, class: 'logout-btn btn btn-warning' do %>
+            <i class="fa fa-sign-out"></i>
+        <% end %>
+    </div>
     <h1>WELCOME VISITORS</h1>
     <h3>TO</h3>
-    <h2><img class="lglogo" src="/images/microhealth-logo.svg" /></h2>
+    <h2><img class="lglogo" src="/images/microhealth-logo.svg"/></h2>
   </div>
 
   <div id="signbtns_div" style="padding:0;background-color: rgba(43,125,187,1);background-image: url('images/triangle.jpg');background-repeat:no-repeat;background-position:center;">
@@ -39,35 +45,35 @@
 </div><!-- main -->
 
 <script>
-    $("#signin_btn").click(function () {
-        window.location.href = "/visitor_sign_form?signin";
-    });
-    $("#signout_btn").click(function () {
-        window.location.href = "/visitor_signout";
-    });
-    $("#missed_btn").click(function () {
-        window.location.href = "/visitor_sign_form?missed_signout";
-    });
-    $("#print_btn").click(function () {
-        alert('Print');
-    });
-    $("#done_btn").click(function () {
-        alert('Done');
-    });
-    $("#cancel_btn").click(function () {
-        alert('Cancel');
-    });
-    $("#exit_btn").click(function () {
-        alert('Exit');
-    });
-    $("#ready_btn").click(function () {
-        alert('Ready');
-    });
-    $("#back_btn").click(function () {
-        alert('Back');
-    });
-    $("#next_btn").click(function () {
-        alert('Next');
-    });
+  $("#signin_btn").click(function () {
+    window.location.href = "/visitor_sign_form?signin";
+  });
+  $("#signout_btn").click(function () {
+    window.location.href = "/visitor_signout";
+  });
+  $("#missed_btn").click(function () {
+    window.location.href = "/visitor_sign_form?missed_signout";
+  });
+  $("#print_btn").click(function () {
+    alert('Print');
+  });
+  $("#done_btn").click(function () {
+    alert('Done');
+  });
+  $("#cancel_btn").click(function () {
+    alert('Cancel');
+  });
+  $("#exit_btn").click(function () {
+    alert('Exit');
+  });
+  $("#ready_btn").click(function () {
+    alert('Ready');
+  });
+  $("#back_btn").click(function () {
+    alert('Back');
+  });
+  $("#next_btn").click(function () {
+    alert('Next');
+  });
 </script>
 </body>

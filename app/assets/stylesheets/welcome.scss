@@ -1,3 +1,17 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+a.logout-btn {
+    width: 2em;
+    height: 2.5em;
+    margin: 0;
+    font-size: 14px;
+    padding-right: 20px;
+    border-radius: 4px;
+
+    &:hover {
+        color: white;
+        background-color: #ec971f;
+    }
+}

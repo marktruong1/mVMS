@@ -56,7 +56,7 @@ yum install git
 # go to /var/www and from there 
 cd /var/www/
 
-git clone https://github.com/iFixtechLLC/mVMS
+git clone https://github.com/MicroHealthLLC/mVMS
 
 nano /var/www/mVMS/config/database.yml
 
@@ -139,7 +139,7 @@ service nginx restart
 # Setup
 go to https://your-url/admin
 
-login with temp account admin with password Admin@2018
+login with temp account admin@example.com with password admin@2018
 
 Change, configure and customize your instance
 

@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: visitor_visit_informations
+#
+#  id                 :bigint(8)        not null, primary key
+#  visitor_id         :integer
+#  date               :datetime
+#  visit_reason       :string(255)
+#  person_visiting_id :integer
+#  us_citizen         :boolean
+#  classified         :boolean
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  sign_in_date       :datetime
+#  sign_out_date      :datetime
+#  recorded_by        :string(255)
+#
+
 class VisitorVisitInformation < ApplicationRecord
   belongs_to :visitor
 

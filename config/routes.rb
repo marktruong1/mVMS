@@ -54,4 +54,10 @@ Rails.application.routes.draw do
   get '/visitor_sign_form', to: 'welcome#visitor_sign_form'
   get '/visitor_badge', to: 'welcome#visitor_badge'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :admin_login_pages, only: :index do
+    collection do
+      post :update
+    end
+  end
 end
