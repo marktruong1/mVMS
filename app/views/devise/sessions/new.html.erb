@@ -7,7 +7,7 @@
       <div class="row">
         <div id="section-1" class="col-xs-12 col-sm-6">
           <%= image_tag section_1_image(@page_content) %>
-          <p><%= @page_content.section_1_body %></p>
+          <p><%= @page_content.section_1_body  if @page_content.present? %></p>
           <%= link_to 'drop off', 'javascript:void(0)', class: 'btn btn-danger', id: 'btn-drop-off' %>
         </div>
         <div id="section-2" class="col-xs-12 col-sm-6">
@@ -17,12 +17,12 @@
 
       <div class="row">
         <div id="section-3" class="col-xs-12 col-sm-6">
-          <p class="heading"><%= @page_content.section_3_title %></p>
-          <p class="body"><%= @page_content.section_3_body %></p>
+          <p class="heading"><%= @page_content.section_3_title if @page_content.present?  %></p>
+          <p class="body"><%= @page_content.section_3_body  if @page_content.present? %></p>
         </div>
         <div id="section-4" class="col-xs-12 col-sm-6">
-          <p class="heading"><%= @page_content.section_4_title %></p>
-          <p class="body"><%= @page_content.section_3_body %></p>
+          <p class="heading"><%= @page_content.section_4_title  if @page_content.present? %></p>
+          <p class="body"><%= @page_content.section_3_body  if @page_content.present? %></p>
         </div>
       </div>
     </div>

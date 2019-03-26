@@ -15,7 +15,7 @@
         <div class="form-group">
           <label>Body</label>
           <textarea class="form-control" name="section_1_body" rows="5">
-            <%= @page_content.section_1_body %>
+            <%= @page_content.section_1_body if @page_content.present? %>
           </textarea>
         </div>
         <div class="form-group">
@@ -39,12 +39,12 @@
         <h3>Section 3</h3>
         <div class="form-group">
           <label>Title</label>
-          <input type="text" class="form-control" name="section_3_title" value="<%= @page_content.section_3_title %>">
+          <input type="text" class="form-control" name="section_3_title" value="<%= @page_content.section_3_title if @page_content.present?  %>">
         </div>
         <div class="form-group">
           <label>Body</label>
           <textarea class="form-control" name="section_3_body" rows="5">
-            <%= @page_content.section_3_body %>
+            <%= @page_content.section_3_body if @page_content.present?  %>
           </textarea>
         </div>
         <br>
@@ -54,12 +54,12 @@
         <h3>Section 4</h3>
         <div class="form-group">
           <label>Title</label>
-          <input type="text" class="form-control" name="section_4_title" value="<%= @page_content.section_4_title %>">
+          <input type="text" class="form-control" name="section_4_title" value="<%= @page_content.section_4_title if @page_content.present?  %>">
         </div>
         <div class="form-group">
           <label>Body</label>
           <textarea class="form-control" name="section_4_body" rows="5">
-            <%= @page_content.section_4_body %>
+            <%= @page_content.section_4_body if @page_content.present?  %>
           </textarea>
         </div>
         <br>
