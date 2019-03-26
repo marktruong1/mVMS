@@ -1,0 +1,67 @@
+<div class="module-title">
+  <h2 class='module-title-text'>ADMIN LOGIN PAGE</h2>
+</div>
+
+<section id="widget-grid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+      <%= form_tag(admin_login_pages_path, multipart: true, method: :post) do %>
+        <h3>Section 1</h3>
+        <div class="form-group">
+          <label>Image</label>
+          <input type="file" name="section_1_image">
+          <%= image_tag section_1_image(@page_content), class: 'preview-image' %>
+        </div>
+        <div class="form-group">
+          <label>Body</label>
+          <textarea class="form-control" name="section_1_body"><%= @page_content.section_1_body %></textarea>
+        </div>
+        <div class="form-group">
+          <label>File</label>
+          <input type="file" name="section_1_file">
+        </div>
+        <br>
+        <hr>
+        <br>
+
+        <h3>Section 2</h3>
+        <div class="form-group">
+          <label>Image</label>
+          <input type="file" name="section_2_image">
+          <%= image_tag section_2_image(@page_content), class: 'preview-image' %>
+        </div>
+        <br>
+        <hr>
+        <br>
+
+        <h3>Section 3</h3>
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" class="form-control" name="section_3_title" value="<%= @page_content.section_3_title %>">
+        </div>
+        <div class="form-group">
+          <label>Body</label>
+          <textarea class="form-control" name="section_3_body"><%= @page_content.section_3_body %></textarea>
+        </div>
+        <br>
+        <hr>
+        <br>
+
+        <h3>Section 4</h3>
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" class="form-control" name="section_4_title" value="<%= @page_content.section_4_title %>">
+        </div>
+        <div class="form-group">
+          <label>Body</label>
+          <textarea class="form-control" name="section_4_body"><%= @page_content.section_4_body %></textarea>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-default">Submit</button>
+        <br>
+        <br>
+        <br>
+      <% end %>
+    </div>
+  </div>
+</section>

@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: visitors
+#
+#  id               :bigint(8)        not null, primary key
+#  name             :string(255)
+#  company          :string(255)
+#  phone            :string(255)
+#  email            :string(255)
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  us_citizen       :string(255)
+#  avatar           :text(65535)
+#  person_signature :text(65535)
+#
+
 class Visitor < ApplicationRecord
   has_many :visitor_visit_informations, :dependent => :destroy
 

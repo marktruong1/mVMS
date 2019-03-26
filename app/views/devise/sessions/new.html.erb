@@ -1,99 +1,111 @@
 <link rel="stylesheet" href="/css/bootstrap-theme2.css">
 <link rel="stylesheet" href="/css/mvms_style.css">
 
-<body>
-
-<div id="admincont" class="container">
+<div id="admin-login" class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-4" id="sidebar">
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
-    </div>
-
-    <div class="col-xs-12 col-sm-8" id="container">
-      <div id="login_div">
-
-        <h1><a href='/'> <img class="smlogo" src="/images/microhealth-logo.svg" /></a></h1>
-
-        <h2>Visitor Management System</h2>
-        <p>&nbsp;</p>
-
-
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name), id: 'login_form') do |f| %>
-              <div class="form-group">
-                <div class="row">
-                  <div class="col-xs-3 col-md-2">
-                    <label for="username">Username:</label>
-                  </div>
-                  <div class="col-xs-9 col-md-10">
-                    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
-                  </div>
-                </div>
-                <p>&nbsp;</p>
-                <div class="row">
-                  <div class="col-xs-3 col-md-2">
-                    <label for="password">Password:</label>
-                  </div>
-                  <div class="col-xs-9 col-md-10">
-                    <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
-                  </div>
-                </div>
-              </div>
-            <div class="buttonrow">
-              <p>
-                <%= f.submit "Log in", class: 'btn btn-success', id: 'login_btn' %>
-              </p>
-            </div>
-
-            </div>
-            <% if devise_mapping.rememberable? -%>
-                <div class="field">
-                  <%= f.check_box :remember_me %>
-                  <%= f.label :remember_me %>
-                </div>
-            <% end -%>
-        <% end %>
-
-        <%#= render "devise/shared/links" %>
-
+    <div id="box-left" class="col-sm-8">
+      <div id="section-1" class="col-xs-12 col-sm-6">
+        <%= image_tag section_1_image(@page_content) %>
+        <p><%= @page_content.section_1_body %></p>
+        <%= link_to 'drop off', 'javascript:void(0)', class: 'btn btn-danger', id: 'btn-drop-off' %>
+      </div>
+      <div id="section-2" class="col-xs-12 col-sm-6">
+        <%= image_tag section_2_image(@page_content) %>
       </div>
 
-
+      <div id="section-3" class="col-xs-12 col-sm-6">
+        <p class="heading"><%= @page_content.section_3_title %></p>
+        <p class="body"><%= @page_content.section_3_body %></p>
+      </div>
+      <div id="section-4" class="col-xs-12 col-sm-6">
+        <p class="heading"><%= @page_content.section_4_title %></p>
+        <p class="body"><%= @page_content.section_3_body %></p>
+      </div>
     </div>
 
+    <div id="box-right" class="col-xs-12 col-sm-4">
+      <div class="container-login-form">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), id: 'login_form') do |f| %>
+          <div class="header">
+            <h4>Sign in</h4>
+          </div>
+          <div class="body">
+            <div class="form-group">
+              <label>E-mail / Username</label>
+              <div class="input-group">
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <div class="input-group">
+                <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+              </div>
+              <%= link_to 'Forgot password?', new_user_password_path %>
+            </div>
+            <div class="form-group">
+              <label>Language</label>
+              <%= select_tag "language", options_for_select([ "English (default)", "French" ], "English (default)"), class: 'form-control' %>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox"> Stay signed in
+              </label>
+            </div>
+          </div>
+          <div class="footer">
+            <%= f.submit "Log in", class: 'btn btn-primary', id: 'login_btn' %>
+          </div>
+        <% end %>
+        <%#= render "devise/shared/links" %>
+      </div>
+
+      <div class="box-social-media-login">
+        <p class="heading">- Or sign in using -</p>
+        <%= image_tag '/images/icon-saml.jpg' %>
+        <br>
+        <br>
+        <div class="social-media-icons">
+          <%= link_to 'javascript:void(0)' do %>
+            <%= image_tag '/images/icon-gplus.jpg' %>
+          <% end %>
+          <%= link_to 'javascript:void(0)' do %>
+            <%= image_tag '/images/icon-facebook.jpg' %>
+          <% end %>
+          <%= link_to 'javascript:void(0)' do %>
+            <%= image_tag '/images/icon-twitter.jpg' %>
+          <% end %>
+          <%= link_to 'javascript:void(0)' do %>
+            <%= image_tag '/images/icon-linkedin.jpg' %>
+          <% end %>
+          <%= link_to 'javascript:void(0)' do %>
+            <%= image_tag '/images/icon-windows.jpg' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
 </div>
 
 <script>
-    $(document).ready(function() {
-        $("#login_btn").click(function () {
-            if (($("#username").val().trim() !== "") && ($("#password").val() !== "")) {
-                if ($("#password").val() === "admin") {
-                    window.location.href = "/alerts.html"; //NOTE: Alerts made default screen for Admin
-                } else if ($("#password").val() === "recept") {
-                    window.location.href = "/visitors.html";
-                } else if ($("#password").val() === "manager") {
-                    window.location.href = "/reports.html?admin=no";
-                } else {
-                    window.location.href = "/index.html";
-                }
-            } else {
-                alert("Complete Log In Form!");
-            }
-        });
+  $(document).ready(function() {
+    $("#login_btn").click(function () {
+      if (($("#username").val().trim() !== "") && ($("#password").val() !== "")) {
+        if ($("#password").val() === "admin") {
+          window.location.href = "/alerts.html"; //NOTE: Alerts made default screen for Admin
+        } else if ($("#password").val() === "recept") {
+          window.location.href = "/visitors.html";
+        } else if ($("#password").val() === "manager") {
+          window.location.href = "/reports.html?admin=no";
+        } else {
+          window.location.href = "/index.html";
+        }
+      } else {
+        alert("Complete Log In Form!");
+      }
     });
-
+  });
 </script>
-</body>

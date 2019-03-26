@@ -20,7 +20,7 @@
 //= require plugin/datatables/dataTables.colVis.min.js
 //= require plugin/datatables/dataTables.tableTools.min.js
 //= require plugin/datatables/dataTables.bootstrap.min.js
-//= require plugin/datatable-responsive/dataTables.responsive.min
+// require plugin/datatable-responsive/dataTables.responsive.min
 //= require admin/buttons.colVis.min
 //= require admin/dataTables.buttons.min
 //= require plugin/datatables/buttons.html5.min

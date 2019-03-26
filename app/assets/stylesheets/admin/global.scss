@@ -91,3 +91,111 @@ ul.dropdown-links a:hover{
   border-bottom: 1px solid skyblue;
 }
 
+//////////////////////
+// admin login page //
+//////////////////////
+
+#admin-login {
+  #box-left {
+    #section-1 {
+      min-height: 400px;
+
+      img {
+        width: 260px;
+      }
+
+      p {
+        font-size: 14px;
+        line-height: 22px;
+        margin-top: 8px;
+        color: #666;
+      }
+
+      #btn-drop-off {
+        margin-left: 0;
+        margin-top: 40px;
+      }
+    }
+
+    #section-2 {
+      min-height: 400px;
+
+      img {
+        margin-top: 30px;
+        width: 320px;
+      }
+    }
+
+    p.heading {
+      font-weight: bold;
+    }
+
+    p.body {
+      font-size: 14px;
+      line-height: 22px;
+      margin-top: 10px;
+      color: #666;
+    }
+  }
+
+  #box-right {
+    min-height: 400px;
+    padding: 0;
+
+    .container-login-form {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+
+      .header {
+        background: #F9F9F9;
+        padding: 15px;
+        border-radius: 4px 4px 0 0;
+        border-bottom: 1px solid #ddd;
+        text-align: left;
+      }
+
+      .body {
+        padding: 18px 13px;
+      }
+
+      .footer {
+        background: #F9F9F9;
+        padding: 15px;
+        border-radius: 0 0 4px 4px;
+        border-top: 1px solid #ddd;
+        text-align: right;
+
+        button {
+          margin-left: 0;
+        }
+      }
+    }
+
+    .box-social-media-login {
+      text-align: center;
+      margin-top: 30px;
+
+      p.heading {
+        font-size: 15px;
+      }
+
+      .social-media-icons {
+        a {
+          margin-right: 8px;
+
+          &:last-child {
+            margin-right: 0;
+          }
+
+          &:hover {
+            background-color: transparent;
+          }
+        }
+      }
+    }
+  }
+}
+
+.preview-image {
+  margin-top:15px;width: 250px;
+}

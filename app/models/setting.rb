@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: settings
+#
+#  id           :bigint(8)        not null, primary key
+#  name         :string(255)
+#  value        :text(65535)
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  setting_type :string(255)
+#
+
 class Setting < ApplicationRecord
 
   DATE_FORMATS = [
