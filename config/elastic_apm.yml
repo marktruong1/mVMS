@@ -1,0 +1,25 @@
+
+#secret_token: 'very secret' # if you APM Server is set up to use one
+#enabled_environments: ['production', 'development'] # default is ['production']
+
+production:
+  # Set service name - allowed characters: a-z, A-Z, 0-9, -, _ and space
+  # Defaults to the name of your Rails app
+  # service_name: 'my-service'
+
+  # Use if APM Server requires a token
+  # secret_token: ''
+
+  # Set custom APM Server URL (default: http://localhost:8200)
+  # server_url: 'http://localhost:8200'
+
+development:
+  # Set service name - allowed characters: a-z, A-Z, 0-9, -, _ and space
+  # Defaults to the name of your Rails app
+  service_name: 'mVMS'
+
+  # Use if APM Server requires a token
+  # secret_token: ''
+
+  # Set custom APM Server URL (default: http://localhost:8200)
+  server_url: 'http://localhost:8200'

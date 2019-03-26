@@ -69,3 +69,5 @@ gem 'carrierwave'
 gem 'prawn-rails'
 gem 'prawn-table'
 gem 'prawn-print'
+
+gem 'elastic-apm'
