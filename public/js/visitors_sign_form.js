@@ -467,25 +467,25 @@ $(document).ready(function () {
 
     $("#capture_cancel_btn, #signature_cancel_btn, #summary_cancel_btn").click(function (e) {
         e.preventDefault();
-        // var thisscreen, thiscancel = this.id.slice(0,-11);
-        // if (window.location.href.indexOf("signin") > 0) {
-        //     thisprocess = "Sign In";
-        // } else if (window.location.href.indexOf("missed") > 0) {
-        //     thisprocess = "Missed Sign Out";
-        // } else {
-        //     thisprocess = "Sign Out";
-        // }
-        // if (thiscancel === "capture") {
-        //     thisscreen = "Photo Capture";
-        // } else if (thiscancel === "signature") {
-        //     thisscreen = "Signature";
-        // } else if (thiscancel === "summary") {
-        //     thisscreen = "Visit Summary";
-        // } else {
-        //     thisscreen = "unsure";
-        // }
-        // alert('Log cancel event on ' + thisprocess + ' - ' + thisscreen + ' screen!');
-        // window.location.href = "/";
+        var thisscreen, thiscancel = this.id.slice(0,-11);
+        if (window.location.href.indexOf("signin") > 0) {
+            thisprocess = "Sign In";
+        } else if (window.location.href.indexOf("missed") > 0) {
+            thisprocess = "Missed Sign Out";
+        } else {
+            thisprocess = "Sign Out";
+        }
+        if (thiscancel === "capture") {
+            thisscreen = "Photo Capture";
+        } else if (thiscancel === "signature") {
+            thisscreen = "Signature";
+        } else if (thiscancel === "summary") {
+            thisscreen = "Visit Summary";
+        } else {
+            thisscreen = "unsure";
+        }
+        alert('Log cancel event on ' + thisprocess + ' - ' + thisscreen + ' screen!');
+        window.location.href = "/";
     });
 
 
